@@ -1,0 +1,150 @@
+/*引入answer_info的css文件*/
+@import "answerList/answerList.wxss";
+@import "../quick/quick.wxss";
+/*第一次的提示*/
+.firstTip ._mask{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+.firstTip{
+	width:100%;
+	height:100%;
+	display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    align-items:center;
+    position:fixed;
+    z-index:1111;
+    
+}
+.firstTip .icon{
+	width:145rpx;
+	height:193rpx;
+	background:url("//services.chubanyun.net/system/images/codebook/xcx/firstTip.png") no-repeat 0 0;
+	background-size:cover;
+	margin-left:25px;
+}
+.firstTip .text{
+	color:#fff;
+	text-align:center;
+	line-height:40px;
+}
+.firstTip text{
+	display:block;
+}
+/*底部title*/
+.mock_bottom{
+	line-height:96rpx;
+	background:#eee;
+	color:#06c1ae;
+	display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+	width:100%;
+
+}
+.mock_bottom .submitAnswer{
+	display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    padding:0 26rpx;
+}
+.mock_bottom .submitAnswer image{
+	width:44rpx;
+	height:44rpx;
+	margin:auto 0;
+	margin-right:10rpx;
+}
+.mock_bottom .submitAnswer text{
+	font-size:12px;
+}
+.mock_bottom .time_icon{
+	width:44rpx;
+	margin:auto 0;
+}
+
+.mock_bottom .time_icon image{
+	width:44rpx;
+	height:44rpx;
+	display:block;
+}
+.mock_bottom .time{
+	padding-left:10rpx;
+	flex:1;
+	font-size:12px;
+}
+.mock_bottom .quick_icon{
+	margin:auto 0;
+	padding:0 26rpx;
+}
+.mock_bottom .quick_icon image{
+	width:44rpx;
+	height:36rpx;
+}
+/*弹出框样式*/
+
+.submitTip ._mask{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  left:0;
+  top:0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+.submitTip{
+	width:100%;
+	height:100%;
+	display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    align-items:center;
+    position:fixed;
+    z-index:1111;
+    
+}
+
+.if-finish-box,.if-save-box,.if-start-box {
+  position: fixed;
+  justify-content: center;
+  top: 50%;
+  right: 0;
+  left: 0;
+  margin: -150rpx auto 0;
+  width: 510rpx;
+  border-radius: 30rpx;
+  background: #fff;
+  padding: 10rpx 6rpx;
+  text-align:center;
+  
+}
+.popup-word {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 50rpx 0;
+}
+.popup-choose {
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid #eee;
+  padding-top: 6rpx;
+}
+.popup-choose  .choose {
+   display: flex;
+   flex:1;
+   flex-direction: row;
+   justify-content: center; 
+   align-items: center;
+   height: 70rpx;
+}
+.popup-choose .start {
+  border-right: 1px solid #eee;
+}
+.popup-choose .color-06c1ae {
+  color: #06c1ae;
+}

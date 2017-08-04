@@ -1,0 +1,137 @@
+<!--pages/view/match/match.wxml-->
+<view class=" {{font}}">
+  <view class="activity {{isMoving?'move-change':''}}">
+    <view class="match-img " bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+      <image src="http://f3.5rs.me/upload/20170522/2017_05_22_105049365.png" class="activity_img" />
+      <view class="next" bindtap="bindNext">
+        <image src="/pages/images/more.png"></image>
+      </view>
+    </view>
+    <scroll-view class="view-des">
+      <view class="activity_des">
+        <view class="info">
+          <view class="info_text">
+              <image src="{{seedInfo.pic_root}}" mode="aspectFill"></image>
+            <view class="info_des">
+              <view class="title f3">{{seedInfo.seed_name}}</view>
+              <view class="des f2">
+                <text>{{seedInfo.seed_desc}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="progress">
+            <view class="pro_all">
+              <view class="pro_active" style="width:{{register_ratio}};"></view>
+            </view>
+            <view class="text">{{seedInfo.register_count}}/{{seedInfo.max_count}}</view>
+          </view>
+          <block wx:if="{{seedInfo.sale_price!='0.00'}}">
+            <view class="state state2">
+              <view class="left">
+                <view class="num">
+                  <text>{{seedInfo.surplus_day}}</text>天</view>
+                <view>还剩</view>
+              </view>
+              <view class="middle">
+                <view class="num">
+                  <text>{{seedInfo.sale_price}}</text>元</view>
+                <view>金额</view>
+              </view>
+
+              <view class="right">
+                <view class="num">
+                  <text>{{seedInfo.max_count-seedInfo.register_count>0?seedInfo.max_count-seedInfo.register_count:0}}</text>人</view>
+                <view>剩余名额</view>
+              </view>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="state state1">
+              <view class="left">
+                <view class="num">
+                  <text>{{seedInfo.surplus_day}}</text>天</view>
+                <view>还剩</view>
+              </view>
+              <view class="right">
+                <view class="num">
+                  <text>{{seedInfo.max_count-seedInfo.register_count>0?seedInfo.max_count-seedInfo.register_count:0}}</text>人</view>
+                <view>剩余名额</view>
+              </view>
+            </view>
+          </block>
+        </view>
+        <view class="detail_title">
+          <view class="text">详细信息</view>
+          <view class="notice" bindtap="showNotice">
+            <text>报名须知</text>
+            <image src="/pages/images/notice.png"></image>
+          </view>
+        </view>
+        <view class="contain">
+          <import src="../../template/richText/richText.wxml"/>
+          <template is="richText" data="{{infolist:seedInfo.info.infolist}}" />          
+        </view>
+      </view>
+
+    </scroll-view>
+  </view>
+  <block wx:if="{{registerStatus.state==1}}">
+    <!--未报名且名额未满-->
+    <block wx:if="{{isMoving}}">
+      <view class="now now2" bindtap="register">{{registerStatus.message}}</view>
+    </block>
+    <block wx:else>
+      <view class="now" bindtap="register">{{registerStatus.message}}</view>
+    </block>
+  </block>
+  <block wx:elif="{{registerStatus.state==2}}">
+    <!--未报名且名额已满 -->
+    <view class="now">{{registerStatus.message}}</view>
+  </block>
+  <block wx:elif="{{registerStatus.state==3}}">
+    <!--已报名 -->
+    <block wx:if="{{isMoving}}">
+      <view class="now now2" bindtap="register">{{registerStatus.message}}</view>
+    </block>
+    <block wx:else>
+      <view class="now" bindtap="register">{{registerStatus.message}}</view>
+    </block>
+  </block>
+  <block wx:elif="{{registerStatus.state==4}}">
+    <!--未开始 -->
+    <view class="now">已停售</view>
+  </block>
+  <block wx:elif="{{registerStatus.state==5}}">
+    <!--已结束 -->
+    <view class="now">已停售</view>
+  </block>
+  <block wx:elif="{{registerStatus.state==102}}">
+    <!--停售 -->
+    <view class="now">已停售</view>
+  </block>
+
+  <block wx:if="{{showNotice}}">
+    <view class="mask">
+      <view class="register_notice">
+        <view class="title">报名须知</view>
+        <view class="contain">
+          <view class="list">1.因本活动需事先准备相关事宜，报名付款后即为报名成功，因自身原因不能参与活动的，报名费用概不退还。</view>
+          <view class="list">2.活动前一周内，客服会与您联系告知活动相关信息。</view>
+          <view class="list">3.活动当天无法出席，可推荐给朋友来代替您的名额。</view>
+          <view class="list">4.拒绝恶意报名，如不出现、不接电话等行为。</view>
+          <view class="list">5.活动期间参与者需遵守主办方制定的活动规则。</view>
+          <view class="list">6.本活动主办方保留本次活动最终解释权。</view>
+        </view>
+        <view class="know" bindtap="hiddenNotice">知道了</view>
+      </view>
+    </view>
+  </block>
+</view>
+
+<!--分享-->
+<block wx:if="{{isShare}}">
+<view class="pub-navigation">
+    <view class="home"  bindtap="toHome"><image src="{{ICON_HOME_PATH}}"></image></view>
+    <view class="user"  bindtap="toUser"><image src="{{ICON_USER_PATH}}"></image></view>
+</view>
+</block>

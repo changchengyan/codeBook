@@ -1,0 +1,144 @@
+/* pages/view/pretest/pretest.wxss */
+.page-list
+{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+   
+}
+/* 题库 头信息**/
+.page-list .list-head
+{    
+    display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:flex-start;
+    padding: 15px;
+    background-color: #06c1ae;
+    color: #fff;   
+}
+.page-list .list-head .instance_icon
+{   
+
+}
+.page-list .list-head .instance_icon image
+{
+     width: 148rpx; 
+     height:146rpx;
+     display:blcok;
+}
+.page-list .list-head .text-canvas
+{   
+   padding: 0px 15px 10px 15px;
+   flex-grow:8;
+   color:#fff;
+   line-height:24px;
+   padding-right:130rpx;
+}
+.page-list .list-head .text-canvas .instance_name{font-size:16px;}
+.page-list .list-head .text-canvas .instance_desc{
+	font-size:16px;
+ }
+.page-list .list-head .text-canvas .instance_all{
+	font-size:12px;
+ }
+.page-list .list-head .instance_more{ flex-grow:1; width: 30px; min-width: 30px; padding: 23px 0px 20px 0px; text-align: center;}
+.page-list .list-head  .instance_more image{ width: 10px;height:17px;}
+/* 题库列表 区域**/
+.test-list-canvas
+{ 
+   width: 100%;
+   background-color: #fff;
+}
+.test-list-canvas .info{
+	padding:10px 20px 10px 20px;
+	background-color:#eeeeee;
+	color:#333;
+	
+}
+.test-list-canvas .des{
+	padding:0 20px;
+	overflow:hidden;
+	height:118px;
+	color:#666;
+	line-height:22px;
+	font-size:14px;
+	margin-top:6px;
+	margin-bottom:10px;
+	overflow-y:scroll;
+	
+}
+.test-list-canvas .type{
+	
+}
+.test-list-canvas .type .day{
+	font-size:16px;
+	line-height:96rpx;
+	border:1px solid #06c1ae;
+	border-radius:7px;
+	color:#06c1ae;	
+	width:296rpx;
+	text-align:center;
+	margin:0 auto;
+	margin-bottom:42rpx;
+}
+.test-list-canvas .type .moni{
+	font-size:16px;
+	line-height:96rpx;
+	border:1px solid #06c1ae;
+	border-radius:7px;
+	color:#06c1ae;
+	text-align:center;
+	width:296rpx;
+	margin:0 auto;
+}
+/*模拟考试有未完成考试的弹框*/
+.Unfinished_mask{
+	width:100%;
+	height:100%;
+	display:flex;
+	flex-direction:row;
+	justify-content:center;
+	align-items:center;
+	position:fixed;
+	left:0;
+	top:0;
+	background-color:rgba(0, 0, 0, 0.5);
+}
+.Unfinished{
+	width:510rpx;
+	border-radius:30rpx;
+	background:#fff;
+	padding:10rpx 6rpx;
+	text-align:center;
+}
+.Unfinished .text{
+	padding:50rpx 0;
+}
+.Unfinished .text text{
+	display:block;
+	line-height:25px
+}
+.Unfinished .press_btn{
+	display:flex;
+	flex-direction:row;
+	border-top:1px solid #eee;
+	padding-top:6rpx;
+}
+.Unfinished .press_btn .no{
+	border-right:1px solid #eee;
+}
+.Unfinished .press_btn view{
+	flex:1;
+	height:70rpx;
+	line-height:70rpx;
+}
+
+.loadding{ padding:10px 0px 10px 0px; text-align: center; font-size: 12px; color: #999;}
+
+
+
+
+
+
+

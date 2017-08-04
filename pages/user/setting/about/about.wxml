@@ -1,0 +1,5 @@
+<!--pages/user/setting/about/about.wxml-->
+<view class="text-body">
+    <text>{{codeBookConfig.about}}</text>
+</view>
+

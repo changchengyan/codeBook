@@ -1,0 +1,24 @@
+/* pages/user/setting/font/font.wxss */
+.title{ padding: 40px 20px 10px 20px; text-align: center;}
+.desc{ padding: 0px 20px 30px 20px; text-align: center; color: #777; border-bottom: 1px solid #eee;}
+.font-range
+{ 
+    padding: 10px 20px 10px 20px; border-bottom: 1px solid #eee;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    min-height: 50px;
+}
+.font-range .range-title{flex-grow:8;}
+.font-range .range-icon
+{ 
+   padding: 2px 5px 0px 5px; 
+   max-width: 20px;   
+   flex-grow:1;
+   text-align: right;
+}
+.font-range .range-icon image
+{
+    width: 15px;
+}

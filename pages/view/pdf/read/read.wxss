@@ -1,0 +1,44 @@
+/* pages/view/album/album.wxss */
+.page-scroll-view
+{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: #888888;
+}
+.album-list-canvas
+{
+   background-color: #888888;
+   padding: 4px;
+}
+
+.nodata-canvas{}
+.nodata-canvas image{ width: 60px;}
+.nodata-canvas .album-nodata{}
+
+
+.album-list-canvas .item-canvas{ padding:2px;}
+.album-list-canvas .item-canvas image{ width: 100%; }
+.bottom-box {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    bottom: 0px;
+    width: 100%;
+    background: #f8f8f8;
+    padding: 5px 0px 5px 0px;
+}
+.slider-box {
+    display:flex;
+    flex-grow: 8;
+}
+.slider-num {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-grow: 1;
+}
+.silder-show {
+    width: 100%;
+}

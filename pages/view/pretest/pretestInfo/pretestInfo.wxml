@@ -1,0 +1,59 @@
+<!--pages/view/pretest/pretest.wxml-->
+<scroll-view class="page-scroll-view {{font}}" style="width:100%;height:100%;" scroll-y="true">
+<view class="page-list {{font}}">
+	<!-- 基本信息 -->
+    <view class="list-head"  bindtap="toInstance">
+        <view class="text-canvas">
+            <view class="instance_name">{{bookMatch.list[0].paper_name}}</view>
+            <view class="instance_all">共{{bookMatch.list[0].questions_count}}道题，答题时间{{bookMatch.list[0].timelong}}分钟</view>     
+        </view>            
+        <view class="instance_icon"><image src="../../../images/error_icon.png" mode="widthFix"></image></view>
+    </view>
+    <!-- 题库简介 -->
+    <view class="test-list-canvas">
+        <view class="info f4">题库简介</view>
+        <view class="des">
+        	{{bookMatch.list[0].paper_desc}}
+        </view>
+        <view class="type">
+        	<view class="day" id="daily" bindtap="bindTapAnswer">日常练习</view>
+        	<view class="moni" id="mock" bindtap="bindTapAnswer">模拟考试</view>
+        </view>
+        
+    </view>
+    <!-- 加载中 -->
+    <!-- <block>    
+        <view class="list-loadding">
+            <view class="icon"><image src="{{LOADDING_ICON}}"></image></view>
+            <view class="text f1"><text>{{LOADDING_TEXT}}</text></view>            
+        </view>
+    </block>-->
+    <!-- 无数据信息 -->
+    <!-- <block>
+        <view class="nodata-canvas">
+            <image src="{{NODATA_ICON}}"  mode="widthFix"></image>
+            <view class="text f2"><text>{{NODATA_TEXT}}</text></view>
+        </view>
+    </block>-->
+    <!--之前有未完成的考试的弹框begin-->
+	<block wx:if="{{Unfinished.booler}}">
+		<view class="Unfinished_mask">
+			<view class="Unfinished">	
+				<view class="text "><text>您有未完成试卷，</text><text>是否继续上次考试？</text></view>
+			    <view class="press_btn">
+			      <view class="no" bindtap="noPre">否</view>
+			      <view class="yes" bindtap="yesPre">是</view>
+			    </view>
+			</view>	
+		</view>
+	</block>
+	<!--之前有未完成的考试的弹框end-->
+</view>
+</scroll-view>
+<!--分享-->
+<block wx:if="{{isShare}}">
+<view class="pub-navigation">
+    <view class="home"  bindtap="toHome"><image src="{{ICON_HOME_PATH}}"></image></view>
+    <view class="user"  bindtap="toUser"><image src="{{ICON_USER_PATH}}"></image></view>
+</view>
+</block>

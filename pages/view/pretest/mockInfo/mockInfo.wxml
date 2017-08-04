@@ -1,0 +1,85 @@
+<!--index.wxml-->
+
+<import src="answerList/answerList.wxml" />
+<import src="../quick/quick.wxml" />
+<!-- 题目展示页面 -->
+<template name="movie-lists">
+
+  <view class='swiper-lists' bindtouchend='touchEnd' bindtouchstart='setEvent'>
+    <block wx:for="{{threeQuestion}}" wx:for-item="itemList" wx:for-index="idx">
+      <scroll-view scroll-y="true" wx:if="{{idx == 0}}" class='swiper-list prev' animation="{{swiper.animationO}}">
+        
+        <template is="movie-list" data="{{isShowAnalyze,idx,itemList,answers,layerlayer,letter,threeQuestion,questions}}" />
+      </scroll-view>
+      <scroll-view scroll-y="true" wx:if="{{idx == 1}}" class='swiper-list' animation="{{swiper.animationT}}">
+        <template is="movie-list" data="{{isShowAnalyze,idx,itemList,answers,layerlayer,letter,threeQuestion,questions,isLast}}" />
+      </scroll-view>
+      <scroll-view scroll-y="true" wx:if="{{idx == 2}}" class='swiper-list next' animation="{{swiper.animationS}}">
+        <template is="movie-list" data="{{isShowAnalyze,idx,itemList,answers,layerlayer,letter,threeQuestion,questions}}" />
+      </scroll-view>
+    </block>
+  </view>
+</template>
+<!-- 模拟考试的底部begin-->
+<block wx:if="{{!isShowAnalyze}}">	
+	<view class="answer-sheet {{answerSheetNegative ? 'negative' : ''}}" bindtap="toggleAnswerSheet">
+    <view class="mask" data-ele="mask"></view>
+    <view class="answer-sheet-content">
+      <view class="title mock_bottom">
+      	<view class="submitAnswer" data-ele="submit">
+      		<image src="http://services.chubanyun.net/system/images/codebook/xcx/finish_test.png" data-ele="submit"></image>
+      		<text data-ele="submit">交卷</text>
+      	</view>
+      	
+		<view class="time_icon">
+			<image src="/pages/images/clock.png"></image>
+		</view>
+		<view class="time">{{mockAnswerTime}}</view>
+		<view class="quick_icon"  data-ele="quick">
+			<image data-ele="quick" src="/pages/images/quick_icon.png"></image>
+		</view>
+      </view>
+      <template is="question-list" data="{{isQuick,answerSheetNegative,answerResultsList}}" />
+    </view>
+  </view>
+</block>
+<!-- 模拟考试的底部end-->
+<!-- 第一次进来的手势提示begin-->
+<block wx:if="{{isFistAnswer}}">
+	<view class="firstTip" bindTap="closeFirstTip">
+		<view class="_mask"></view>		
+		<view class="text"><text>答题完毕后</text><text>左划进入下一题哦~</text></view>
+		<view class="icon"></view>
+	</view>
+</block>
+<!-- 第一次进来的手势提示end-->
+<!-- 交卷的提示begin-->
+<block wx:if="{{submitData.isSubmit}}">
+	<view class="submitTip">
+		<view class="_mask"></view>
+		 <view class="if-start-box ">		 	
+		    <view class="popup-word ">
+		        <view>{{submitData.text}}</view>
+		    </view>
+		    <view class="popup-choose ">
+		      <view class="choose start " bindtap="closeSubmit">取消</view>
+		      <view class="choose continue" bindtap="querenSubmit">交卷</view>
+		    </view>
+		 </view>
+	</view>
+</block>
+<!-- 交卷的提示begin-->
+ 
+<!--<loading hidden="{{isLoading}}">加载中...</loading>-->
+
+<block wx:if="true">
+  <template is="movie-lists" data="{{isShowAnalyze,answers,layerlayer,threeQuestion,isLoading,letter,swiper,questions,isLast}}" />
+</block>
+<block wx:else>
+  <view class="metadata">
+    <view>暂无数据</view>
+  </view>
+</block>
+
+<import src="../../../template/template.wxml"/>
+<template is="template-pay-box" data="{{price:template_pay.price,payShow:template_pay.payShow,sourceName:template_pay.sourceName,sourceNum:template_pay.sourceNum,clicked:template_pay.clicked}}" />

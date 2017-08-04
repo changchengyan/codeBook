@@ -1,0 +1,231 @@
+/* pages/view/pretest/pretest.wxss */
+.page-list
+{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+   
+}
+/* 题库 头信息**/
+.page-list .list-head
+{    
+    display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:flex-start;
+    padding: 15px;
+    background-color: #06c1ae;
+    color: #fff;   
+}
+.page-list .list-head .image-canvas
+{   
+   width: 60px; max-width: 60px; min-width: 60px; padding: 3px 0px 0px 0px;
+   flex-grow:1; 
+    
+}
+.page-list .list-head .image-canvas image
+{
+     width: 60px; 
+     height:60px;
+}
+.page-list .list-head .text-canvas
+{   
+   padding: 0px 15px 10px 15px;
+   flex-grow:8;
+}
+.page-list .list-head .text-canvas .instance_name{ padding: 0px 0px 5px 0px;}
+.page-list .list-head .text-canvas .instance_desc{
+	color: #cfebeb;overflow:hidden; 
+    text-overflow:ellipsis;
+    display:-webkit-box; 
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+ }
+.page-list .list-head .instance_more{ flex-grow:1; width: 30px; min-width: 30px; padding: 23px 0px 20px 0px; text-align: center;}
+.page-list .list-head  .instance_more image{ width: 10px;height:17px;}
+/* 题库列表 区域**/
+.test-list-canvas
+{ 
+   width: 100%;
+   background-color: #fff;
+}
+.test-list-canvas .list-title
+{ 
+    padding: 10px 20px 10px 20px; 
+    background-color: #04bca9; color: #fff;
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
+
+.test-list-canvas .item-canvas
+{
+   border-bottom:4px solid #eee; 
+}
+.test-list-canvas .item-canvas .test-list
+{
+    display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+}
+.test-list-canvas .item-canvas .test-list
+{
+    padding: 12px 20px 12px 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items: center;
+}
+.test-list-canvas .item-canvas .test-list .number
+{ 
+    width:20px;height:20px;
+    font-size: 12px; line-height: 20px; 
+    text-align:center; color: #333;
+}
+.test-list-canvas .item-canvas .test-list .name
+{ 
+    flex-grow:3;   
+    padding: 0px 10px 0px 10px;
+    line-height: 20px;
+    word-break:break-all;  
+    color: #333;  
+}
+.test-list-canvas .item-canvas .test-list .count
+{   
+    padding: 0px 10px 0px 0px;
+    color: #999;
+}
+.test-list-canvas .item-canvas .test-list .next
+{    
+    padding: 0px 0px 0px 0px;
+    text-align: right;
+    color: #999;
+}
+.test-list-canvas .item-canvas .test-list .next image
+{ 
+    width:12px;
+    height:15px;
+    display:block;
+}
+.test-list-canvas .test_error{
+	display: flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    margin-top:22rpx;
+    line-height:20px;
+}
+.test-list-canvas .test_error .img{
+	margin:auto 0;
+	margin-right:20rpx;
+}
+.test-list-canvas .test_error .img image{
+	width:33rpx;
+	height:36rpx;
+	display:block;
+}
+.test-list-canvas .test_error .text{
+	font-size:12px;
+	color:#666;
+
+}
+.test-list-canvas .test_error .next{
+	margin:auto 0;
+	margin-left:40rpx;
+	margin-right:20px;
+
+}
+.test-list-canvas .test_error .next image{
+	width:12px;
+    height:15px;
+    display:block;
+
+}
+
+/*支付*/
+.mask .pay{	
+	width:80%;
+	color:#333;		
+	margin:auto 0;
+	position:relative;
+}
+.mask .pay .pay_icon{
+	position:absolute;
+	top:-60rpx;
+	left:0;
+	right:0;
+	margin:0 auto;
+	display:flex;
+	flex-direction:row;
+	justify-content:center;	
+	width:138rpx;
+	height:138rpx;
+	border-radius:50%;
+	background:#fff;
+	
+}
+.mask .pay .pay_icon image{
+	margin-top:12rpx;
+	width:45rpx;
+	height:52rpx;
+}
+.mask .pay .info_box{
+	width:100%;
+	background:#fff;
+	display:flex;
+	flex-direction:column;
+	justify-content:space-between;
+	border-radius:30rpx;
+	overflow:hidden;
+		
+}
+.mask .pay .info_box .to-close{
+	width:100%;
+	padding:25rpx 20rpx;
+	display:flex;
+	flex-direction:row;
+	justify-content:space-between;
+	font-size:12px;	
+	color:#666;
+}
+.mask .pay .info_box .to-close .to-close-box{
+	width:30rpx;
+}
+.mask .pay .info_box .to-close image{
+	width:100%;
+	height:13px;
+}
+.mask .pay .info_box .money{
+	font-size:50rpx;
+	padding-bottom:30rpx;
+	color:#06c1ae;
+	text-align:center;	
+}
+.mask .pay .info_box .name{
+	font-size:32rpx;
+	color:#333;
+	text-align:center;
+}
+.mask .pay .loaddings{
+	height:40px;
+}
+.mask .pay .loaddings image{
+	margin:0 auto;
+	margin-top:15px;
+	width:50px;
+	height:10px;
+	display:block;
+}
+.mask .pay .pay-info-form{
+	width:100%;
+}
+
+
+.loadding{ padding:10px 0px 10px 0px; text-align: center; font-size: 12px; color: #999;}
+
+
+
+
+
+
+

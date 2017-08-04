@@ -1,0 +1,114 @@
+<!--pages/view/activity/register/register.wxml-->
+<view class=" {{font}} register-box">
+	<!--顶端提示-->
+	<block wx:if="{{showTip}}">
+		<view class="tips">
+			<view class="text">请填写真实信息，提交后如需修改请联系客服</view>
+			<view class="close" bindtap="closeTip"><image src="/pages/images/close.png" mode="widthFix"></image></view>
+		</view>
+	</block>
+	<form bindsubmit="formSubmit">
+	<view class="register_info">
+		
+		<block wx:for="{{seedMatchComponents}}">
+			<!--单行输入框-->
+			<view class="list" wx:if="{{item.item_input_type=='input'}}">
+				<view class="text">{{item.item_title}}</view>
+				<view class="type">
+					<block wx:if="{{item.item_title=='姓名'}}">
+						<input data-id="{{item.id}}"  bindfocus="bindFocusIpt" bindblur="bindBlur" value="{{item.values[0].text}}" bindinput="bindInput" name="info_{{index}}" data-index="{{index}}" require="{{item.require}}" placeholder="{{showPlaceholder[index]?'参与人'+item.item_title:''}}" placeholder-style="color:#999;"></input>
+					</block>
+					<block wx:elif="{{item.item_title=='公司'}}">
+						<input v bindfocus="bindFocusIpt" bindblur="bindBlur" value="{{item.values[0].text}}" bindinput="bindInput" name="info_{{index}}" data-index="{{index}}" require="{{item.require}}" placeholder="{{showPlaceholder[index]?'参与人'+item.item_title:''}}" placeholder-style="color:#999;"></input>
+					</block>
+					<block wx:elif="{{item.item_data_type=='Mobile'}}">
+						<input data-id="{{item.id}}"  bindfocus="bindFocusIpt" bindblur="bindBlur" type="number" value="{{item.values[0].text}}" bindinput="bindInput" name="info_{{index}}" data-index="{{index}}" require="{{item.require}}" placeholder="{{showPlaceholder[index]?'参与人'+item.item_title:''}}" placeholder-style="color:#999;"></input>
+					</block>
+					<block wx:else>
+						<input data-id="{{item.id}}"  bindfocus="bindFocusIpt" bindblur="bindBlur" value="{{item.values[0].text}}" bindinput="bindInput" name="info_{{index}}" data-index="{{index}}" require="{{item.require}}" placeholder="{{showPlaceholder[index]?'参与人'+item.item_title:''}}" placeholder-style="color:#999;"></input>
+					</block>
+				</view>
+			</view>
+			<!--文本域输入框-->
+			<view class="list textarea {{template_pay.payShow?'hide':''}}" wx:if="{{item.item_input_type=='textarea'}}">
+				<view class="text">{{item.item_title}}</view>
+				<view class="type">
+					<block wx:if="{{textareaShow}}">
+						<textarea data-id="{{item.id}}"  bindfocus="bindFocusIpt" bindblur="bindBlur" value="{{item.values[0].text}}" name="info_{{index}}" bindinput="bindAreaInput" data-index="{{index}}"  require="{{item.require}}" maxlength="80" auto-height placeholder="{{showPlaceholder[index]?'最多输入80个字':''}}" fixed="true" placeholder-style="color:#999;"  />
+					</block>
+				</view>			
+			</view>
+			<!--单选框-->
+			<view class="list" wx:if="{{item.item_input_type=='radio'}}">
+				<view class="text">{{item.item_title}}</view>
+				<radio-group data-id="{{item.id}}"  class="type radio-group" name="info_{{index}}" bindchange="radioChange">
+				  <label class="radio" wx:for="{{item.values}}" wx:for-index="radio_idx" wx:for-item="radio_item">
+					   <radio value="{{radio_item.text}}" checked="{{radio_item.checked}}" class="radio-style" color="#00bfab" />{{radio_item.text}}
+				  </label>
+				</radio-group>
+			</view>
+			<!--多选框-->
+			<view class="list checkBox" wx:if="{{item.item_input_type=='checkbox'}}">
+				<view class="text">{{item.item_title}}</view>
+				<checkbox-group data-id="{{item.id}}"  bindchange="checkboxChange" name="info_{{index}}"  class="type checkbox-group">
+				  <label class="checkbox" wx:for="{{item.values}}" wx:for-index="checkbox_idx" wx:for-item="checkbox_item">
+				    <checkbox value="{{checkbox_item.text}}" checked="{{checkbox_item.checked}}" color="#00bfab"/>{{checkbox_item.text}}
+				  </label>	  
+				</checkbox-group>
+			</view>
+			<!--一级下拉选择-->
+			<view class="list" wx:if="{{item.item_input_type=='select'}}">
+				<view class="text">{{item.item_title}}</view>
+				  <picker class="type" data-id="{{item.id}}" name="info_{{index}}"  bindchange="bindPickerChange" value="{{item.pickerIndex==null?0:item.pickerIndex}}" range="{{item.values}}" range-key="text">
+				    <view>
+				      {{item.values[item.pickerIndex==null?0:item.pickerIndex].text}}
+				    </view>
+				  </picker>
+			</view>
+			<!--二级下拉选择-->
+			<view class="list" wx:if="{{item.item_input_type=='levelselect'}}">
+				<view class="text">{{item.item_title}}</view>
+				<view class="type" bindtap="dianji" data-id="{{item.id}}" name="info_{{index}}">{{item.result?item.result.province+' '+item.result.city:'请选择'}}</view>
+			</view>
+			
+		</block>
+
+		
+		
+		
+	</view>
+	<view class="register_btn">
+        <button class="pub-submit" type="default" form-type="submit"> 立即报名 </button>
+    </view>
+   </form>
+	<!--<view class="commit_info" bindtap="bindConfirm">提交信息</view>	-->
+	
+</view>
+<import src="../../../template/template.wxml"/>
+<template is="template-pay-box" data="{{price:template_pay.price,payShow:template_pay.payShow,sourceName:template_pay.sourceName,sourceNum:template_pay.sourceNum,clicked:template_pay.clicked}}" />
+<view class="cascade_box" animation="{{animationData}}">
+<view class="cascade_hei"></view>
+
+<view class="cascade_find">
+  <view class="cascade_header">
+    <text class="quxiao" catchtap="quxiao">取消</text>
+    <text class="queren" catchtap="queren">确认</text>
+  </view>
+  <picker-view indicator-style="height: 50px;" class="picker_jilian" value="{{}}" bindchange="bindJilianChange">
+    <picker-view-column>
+      <view wx:for="{{sheng}}" style="line-height: 50px;text-align:center;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{shi}}" style="line-height: 50px;text-align:center;">{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+</view>
+
+<!--分享-->
+<block wx:if="{{isShare}}">
+<view class="pub-navigation">
+    <view class="home"  bindtap="toHome"><image src="{{ICON_HOME_PATH}}"></image></view>
+    <view class="user"  bindtap="toUser"><image src="{{ICON_USER_PATH}}"></image></view>
+</view>
+</block>

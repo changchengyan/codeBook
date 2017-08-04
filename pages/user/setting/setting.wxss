@@ -1,0 +1,42 @@
+/* pages/user/setting/setting.wxss */
+
+/*分组菜单*/
+.menu-name{ background-color: #f0f0f0; padding: 15px;font-size: 14px; color: #777;}
+.menu-tab
+{
+   padding: 10px 20px 10px 20px;
+   background-color: #fff;
+
+}
+.menu-tab .menu
+{
+  
+   padding: 10px 0px 10px 0px;
+   font-size: 14px;
+   display: flex;  
+   flex-direction:row;
+   justify-content:center;
+    align-items:center;
+}
+.menu-tab .line{ border-bottom: 1px solid #eee;}
+.menu-tab .menu .title
+{
+   flex-grow:8;
+}
+.menu-tab .menu .text
+{
+   color: #777; font-size: 12px;
+}
+.menu-tab .menu .arrow
+{
+   padding: 2px 5px 0px 5px; 
+   max-width: 20px;   
+   flex-grow:1;
+   text-align: right;
+}
+.menu-tab .menu .arrow image
+{
+    width: 9px; height: 15px;
+}
+
+

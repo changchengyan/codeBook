@@ -1,0 +1,65 @@
+<!--pages/view/pretest/pretest.wxml-->
+
+<template name="question-list">
+  <scroll-view scroll-y="true">
+    <view class="body question-list">
+      <block wx:for="{{answerResultsList}}">
+        <block wx:if="{{!isQuick}}">
+        	<!--日常练习-->
+        	<block wx:if="{{item.user_content}}"  >
+	          <view class="question-item {{item.mark_right==1 ? 'right': 'error'}}" data-qid="{{item.id}}" catchtap="toquestion">{{item.number}}</view>
+	        </block>
+	        <block wx:else>
+	          <view class="question-item no-answer" data-qid="{{item.id}}" catchtap="toquestion">{{item.number}}</view>
+	        </block>
+        </block>
+        <block wx:else>
+        	<!--模拟练习的答题卡-->
+        	<block wx:if="{{item.user_content}}">
+	          <view class="question-item right" data-qid="{{item.id}}" catchtap="toquestion">{{item.number}}</view>
+	        </block>
+	        <block wx:else>
+	          <view class="question-item no-answer" data-qid="{{item.id}}" catchtap="toquestion">{{item.number}}</view>
+	        </block>
+        </block>
+      </block>
+
+    </view>
+  </scroll-view>
+</template>
+
+
+<!--要抽出的弹框-->
+<!--<view class="mask "></view>
+
+ <view class="if-start-box ">
+    <view class="popup-word ">
+        <view>您上次未完成练习</view>
+        <view>是否继续？</view>
+    </view>
+    <view class="popup-choose ">
+      <view class="choose start ">重新开始</view>
+      <view class="choose continue color-06c1ae ">继续练习</view>
+    </view>
+ </view>
+
+  <view class="if-save-box ">
+    <view class="popup-word ">
+        <view>退出后保存练习记录？</view>
+    </view>
+    <view class="popup-choose ">
+      <view class="choose start ">重新开始</view>
+      <view class="choose continue color-06c1ae ">继续练习</view>
+    </view>
+ </view>
+
+ <view class="if-finish-box ">
+    <view class="popup-word ">
+        <view>还有题目未完成</view><view>是否继续？</view>
+    </view>
+    <view class="popup-choose ">
+      <view class="choose start ">重新开始</view>
+      <view class="choose continue color-06c1ae ">继续练习</view>
+    </view>
+ </view>-->
+<!--要抽出的弹框 end-->

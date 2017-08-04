@@ -1,0 +1,90 @@
+/* pages/book/answer/answer.wxss */
+.page-scroll-view
+{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+.teacher-area
+{
+    padding: 15px;
+    background-color: #06c1ae;
+    color: #fff;
+}
+.teacher-area .head-info
+{
+    display: flex;
+    flex-direction:row;
+    align-items:center;
+
+}
+.teacher-area .head-info .img{flex-grow:1; max-width: 60px; min-width: 60px;}
+.teacher-area .head-info .img image{ width: 50px; height: 50px; border-radius: 50px;}
+.teacher-area .head-info .text{flex-grow:5;}
+.teacher-area .head-info .text .nickname{padding: 0px 0px 5px 0px;}
+.teacher-area .head-info .text .other{color: #cfebeb;}
+.teacher-area .head-info .toform{ min-width: 80px; text-align: center;}
+.teacher-area .sales-info{ padding: 0px 0px 0px 60px;}
+.teacher-area .sales-info .text{ color: #cfebeb; }
+.teacher-area .head-info .toform{border: 1px solid #6ee0d4; background-color: #0ec8b5; border-radius: 5px; padding: 5px 0px 5px 0px;}
+
+.list-title
+{ 
+    padding: 10px 20px 10px 20px; 
+    background-color: #04bca9; color: #fff;
+}
+
+.ask-node
+{
+    border-bottom: 1px solid #eee;
+    padding: 10px 0px 10px 0px;
+}
+
+
+
+.ask-item
+{
+    
+    display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:flex-start;
+    padding: 5px 25px 5px 25px;
+}
+.ask-item .ask-headimg{flex-grow:1; min-width: 30px; max-width: 30px;}
+.ask-item .ask-headimg image{ width: 30px; height: 30px; border-radius: 30px;}
+
+
+.ask-item .ask-text{flex-grow:9; padding:0px 0px 0px 20px;}
+.ask-item .ask-text .nickname{ color: #999;}
+.ask-item .ask-text .info{ color: #333; padding: 10px 0px 10px 0px;text-align:justify !important;}
+.ask-item .ask-text .datetime{color: #999; display: inline; float:right;}
+
+
+/**从评论***/
+.ask-item-reply
+{ 
+    display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:flex-start;
+    padding: 5px 25px 5px 25px;
+}
+.ask-item-reply .ask-headimg{flex-grow:1; min-width: 50px; max-width: 50px;}
+.ask-item-reply .ask-headimg image{ width: 30px; height: 30px; border-radius: 30px;}
+
+.ask-item-reply .ask-text
+{
+    flex-grow:9; 
+    padding:10px 10px 10px 10px; 
+    border: 1px solid #eee; background-color: #f8f8f8;
+    border-radius: 3px;
+}
+.ask-item-reply .ask-text .nickname{color: #999;}
+.ask-item-reply .ask-text .datetime{ color: #999;display: inline; float:right;}
+.ask-item-reply .ask-text .info{ color: #333; padding: 10px 0px 5px 0px;text-align:justify !important;}
+.no-answer{
+	text-align:center;
+	color:#999;
+	margin-top:100px;
+}

@@ -1,0 +1,20 @@
+<!--pages/seed/order/order.wxml-->
+<view class="order-box {{font}}">
+  <view class="commodity-state">已支付</view>
+  <view class="receiver-info f1">
+    <view class="item">收货人姓名：{{receiverInfo.shou_fullname}}</view>
+    <view class="item">收货人电话：{{receiverInfo.shou_mobile}}</view>
+    <view class="item">收货地址：{{receiverInfo.shou_adderss}}</view>
+  </view>
+  <view class="commodity-info">
+    <view class="commodity-img">
+      <image src="{{orderInfo.pro_pic}}" mode="widthFix"></image>
+    </view>
+    <view class="commodity-word f3">
+      <view class="name">{{orderInfo.pro_name}}</view>
+      <view class="price">￥{{orderInfo.total_price}}</view>
+    </view>
+  </view>
+  <view class="button f2" bindtap="toAgain">再次购买</view>
+
+</view>

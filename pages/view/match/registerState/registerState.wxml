@@ -1,0 +1,37 @@
+<view class=" {{font}} contain-box">
+	
+	<view class="state state1" wx:if="{{state==1}}">
+		<view class="state_icon">
+			<image src="/pages/images/register_sucess.png"></image>
+		</view>
+		<view class="state_text">报名成功</view>
+		<view class="check" bindtap="bindCheck">查看我的报名</view>
+	</view>
+	<!--<view class="state state2" style="display:none;">
+		<view class="state_icon">
+			<image src="/pages/images/noNet.png"></image>
+		</view>
+		<view class="state_text">网络延迟等原因导致您报名失败请稍后重试</view>
+	</view>-->
+	<view class="state state3" wx:elif="{{state==2}}">
+		<view class="state_icon">
+			<image src="/pages/images/crowd.png"></image>
+		</view>
+		<view class="state_text">很抱歉，名额已满，下次要赶早哟！</view>
+	</view>
+	<view class="state state1" wx:elif="{{state==3}}">
+		<view class="state_icon">
+			<image src="/pages/images/register_sucess.png"></image>
+		</view>
+		<view class="state_text">您已报名</view>
+		<view class="check" bindtap="bindCheck">查看我的报名</view>
+	</view>
+	<view class="state state1" wx:elif="{{state==0}}">
+		<view class="state_icon">
+			<image src="/pages/images/register_sucess.png"></image>
+		</view>
+		<view class="state_text">报名失败</view>
+		<view class="check" bindtap="registerAgin">重新报名</view>
+	</view>
+	
+</view>

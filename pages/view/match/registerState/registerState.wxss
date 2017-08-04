@@ -1,0 +1,50 @@
+.state{
+	display:flex;
+	flex-direction:column;
+	justify-content:flex-start;
+}
+.state .state_icon{
+	margin-top:188rpx;
+}
+.state1 .state_icon image{
+	width:164rpx;
+	height:220rpx;
+	display:block;
+	margin:0 auto;	
+}
+.state2 .state_icon image{
+	width:149rpx;
+	height:238rpx;
+	display:block;
+	margin:0 auto;	
+}
+.state3 .state_icon image{
+	width:290rpx;
+	height:234rpx;
+	display:block;
+	margin:0 auto;	
+}
+.state .state_text{
+	text-align:center;
+	font-size:14px;
+	color:#06c1ae;
+	margin-top:	44rpx;
+	margin-bottom:68rpx;
+	line-height:40rpx;
+}
+.state1 .check{
+	width:500rpx;
+	background:#06c1ae;
+	text-align:center;
+	color:#fff;
+	border-radius:15rpx;
+	font-size:14px;
+	padding:36rpx 0;
+	margin:0 auto;
+}
+.state2 .state_text{
+	color:#999;
+}
+.state3 .state_text{
+	color:#999;
+}

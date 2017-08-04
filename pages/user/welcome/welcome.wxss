@@ -1,0 +1,9 @@
+/* pages/user/welcome/welcome.wxss */
+.welcome-pic{}
+.welcome-pic image{ width: 100%;}
+
+.welcome-t1{ font-size: 18px; padding: 30px 0px 0px 0px; text-align: center;}
+.welcome-t2{ font-size: 14px; padding: 5px 0px 0px 0px; text-align: center; color: #999;}
+.welcome-t3{ font-size: 16px; padding: 50px 0px 30px 0px; text-align: center; color: #06c1ae;}
+
+.button{ width: 70%; margin: auto; padding: 10px 15px 10px 15px;border: 1px solid #03b5a3; background-color: #06c1ae; text-align: center; font-size: 14px;  border-radius: 5px; color: #fff;}

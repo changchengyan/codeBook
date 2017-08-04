@@ -1,0 +1,48 @@
+<!--pages/view/article/article.wxml-->
+
+<view class="{{font}}">
+	<block wx:if="{{app_instance_style=='live'}}">
+		<image class="live_image" mode="widthFix" src="{{appInstance.instance_pic_transverse}}"></image>
+		<view class="title f6"><text style="font-weight:bold;">{{appInstance.instance_name}}</text></view>
+		<view class="datetime f1">直播时间：{{appInstance.sale_begin_time}}-{{appInstance.sale_end_time}}</view>
+	</block>
+	<block wx:else>
+		<view class="title f6"><text>{{appInstance.instance_name}}</text></view>
+		<view class="datetime f1"><view class="original f1">原创</view>更新：{{appInstance.updatetime}}</view>
+	</block>
+
+    <view class="desc-canvas">
+        <view class="desc-text-base desc-text">
+            <text>{{appInstance.instance_desc}}</text>
+        </view>
+    </view>
+
+ 
+
+
+    <view class="info"> 
+    <view wx:if="{{appInstance.instance_info_mp3_url}}" class="audio-box">
+    <!--<audio poster="{{appInstance.instance_pic}}"  name="{{appInstance.instance_name}}" author="" src="{{appInstance.instance_info_mp3_url}}"  controls="true" class="audio"></audio>-->
+	    <view class="contain">
+	    	<view class="pic">
+	    		<image class="img" src="{{appInstance.instance_pic}}"></image>
+	    		<block wx:if="{{playing}}">
+	    		<view class="audio_play" bindtap="audioPause">
+	    			<view class="pause"></view>	    			
+	    		</view>
+	    		</block>
+	    		<block wx:else>
+	    		<view class="audio_play" bindtap="audioToPlay">
+	    			<view class="play"></view>
+	    		</view>
+	    		</block>
+	    	</view>
+	    	<view class="name">{{appInstance.instance_name}}</view>
+	    	<view class="time">{{appInstance.currentPosition}}</view>
+	    </view>
+	    <view></view>
+    </view>
+        <import src="../../template/richText/richText.wxml"/>
+        <template is="richText" data="{{infolist:appInstance.instance_info.infolist}}" /> 
+    </view>
+</view>

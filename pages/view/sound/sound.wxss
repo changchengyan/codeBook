@@ -1,0 +1,316 @@
+/* pages/view/sound/sound.wxss */
+.page-list
+{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+   
+}
+/* 歌曲列表 头信息**/
+.page-list .list-head
+{
+    
+    display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:flex-start;
+    padding: 15px;
+    background-color: #06c1ae;
+    color: #fff;
+    
+}
+.page-list .list-head .image-canvas
+{   
+   width: 60px; max-width: 60px; min-width: 60px; padding: 3px 0px 0px 0px;
+   flex-grow:1; 
+    
+}
+.page-list .list-head .image-canvas image
+{
+     width: 60px; 
+     height:60px;
+}
+.page-list .list-head .text-canvas
+{   
+   padding: 0px 15px 10px 15px;
+   flex-grow:8;
+}
+.page-list .list-head .text-canvas .instance_name{ padding: 0px 0px 5px 0px;}
+.page-list .list-head .text-canvas .instance_desc{
+	color: #cfebeb;overflow:hidden; 
+    text-overflow:ellipsis;
+    display:-webkit-box; 
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+ }
+.page-list .list-head .instance_more{ flex-grow:1; width: 30px; min-width: 30px; padding: 23px 0px 20px 0px; text-align: center;}
+.page-list .list-head  .instance_more image{ width: 10px;height:17px;}
+
+
+/* 歌曲列表 区域**/
+.sound-list-canvas
+{ 
+   width: 100%;
+   background-color: #fff;
+}
+.sound-list-canvas .list-title
+{ 
+    padding: 10px 20px 10px 20px; 
+    background-color: #04bca9; color: #fff;
+}
+
+
+.sound-list-canvas .item-canvas
+{
+    
+}
+.sound-list-canvas .item-canvas .sound-item
+{
+    padding: 12px 20px 12px 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items: center;
+    border-left: 3px solid #fff;
+}
+.sound-list-canvas .item-canvas .sound-item .number
+{ 
+    flex-grow:1; 
+    min-width: 20px; min-height: 20px;
+    max-width: 20px; max-height: 20px;
+    font-size: 10px; line-height: 20px; background-color: #f8f8f8; 
+    border:1px solid #ddd; border-radius: 20px; text-align:center; color: #999;
+}
+.sound-list-canvas .item-canvas .sound-item .name
+{ 
+    flex-grow:5;   
+    padding: 0px 10px 0px 10px;
+    line-height: 20px;
+    word-break:break-all;    
+}
+.sound-list-canvas .item-canvas .sound-item .time
+{ 
+    flex-grow:1;   
+    padding: 0px 0px 0px 0px;
+    text-align: right;
+    color: #999;
+}
+
+
+.sound-list-canvas .item-canvas .sound-item-over
+{
+    padding: 12px 20px 12px 15px;
+    border-bottom: 1px solid #cfebeb;
+    display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items: center;
+    border-left: 3px solid #06c1ae;
+    background-color: #eaf9f9;
+}
+.sound-list-canvas .item-canvas .sound-item-over .number
+{ 
+    flex-grow:1; 
+    min-width: 20px; min-height: 20px;
+    max-width: 20px; max-height: 20px;
+    font-size: 10px; line-height: 20px; background-color: #06c1ae; 
+    border:1px solid #06c1ae; border-radius: 20px; text-align:center; color: #fff;
+}
+.sound-list-canvas .item-canvas .sound-item-over .name
+{ 
+    flex-grow:5;   
+    padding: 0px 10px 0px 10px;
+    line-height: 20px;
+    color: #06c1ae;
+    word-break:break-all;
+}
+.sound-list-canvas .item-canvas .sound-item-over .time
+{ 
+    flex-grow:1;   
+    padding: 0px 0px 0px 0px;
+    text-align: right;
+    color: #43d0c2;
+}
+
+.loadding{ padding:10px 0px 10px 0px; text-align: center; font-size: 12px; color: #999;}
+
+
+
+/**播放器容器区域**/
+.sound-controls-visibility{ flex-grow:1; height: 145px;}
+.sound-controls-canvas
+{
+    position:fixed;
+    z-index: 1;
+    left: 0px; bottom: 0px;
+    flex-grow:1; 
+    width: 100%;
+    height: 145px; max-height: 145px;
+    background-color: #f5f5f5;    
+    border-top: 1px solid #eee;
+}
+.split-view
+{
+    width: 100%;
+    height: 20px;
+    background-color: #f8f8f8;
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+}
+.split-view view
+{
+    width: 5px; height: 5px; background-color: #999; line-height: 5px; border-radius: 10px; margin:2px;
+}
+
+
+/**进度展示与控制**/
+.sound-controls-canvas .progress-view
+{
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    padding: 10px 0;
+}
+.sound-controls-canvas .progress-view .time-left
+{
+    flex:2; 
+    text-align: right;
+    font-size: 12px;
+    color: #999;
+    padding: 0px 5px 0px 0px;
+}
+/*.sound-controls-canvas .progress-view .pro-background
+{
+    height: 3px;
+    padding-top:16px;
+    padding-bottom:16px;
+    flex:8; 
+    background-color: #eee;
+   	background-clip:content-box;
+    position:relative;
+    box-sizing:content-box;
+}*/
+.sound-controls-canvas .progress-view .pro-background .pro-load
+{
+	position:relative;	
+    height: 3px;
+    width: 0%;
+    background-color: #cfebeb;
+}
+.sound-controls-canvas .progress-view .pro-background .pro-light
+{
+	position:relative;
+    height: 3px;
+    width: 0%;
+    background-color: #06c1ae;
+    margin-top: -3px;
+}
+.sound-controls-canvas .progress-view .pro-background .pro-now
+{
+	width:9px;
+	height:9px;
+	padding:16px;
+	background-color: #06c1ae;
+    background-clip:content-box;
+    -webkit-background-clip:content-box;
+	border-radius:50%;
+	position:absolute;
+	top:-3px;
+	transform:translateX(-16px);
+	-webkit-transform:translateX(-16px);
+	
+}
+.sound-controls-canvas .progress-view .time-right
+{
+    flex:2; 
+    text-align: left;
+    font-size: 12px;
+    color: #999;
+     padding: 0px 0px 0px 0px;
+}
+
+/**播放按钮控制**/
+.sound-controls-canvas .operation-view
+{
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    padding: 0px 10px 0px 10px;
+}
+
+.sound-controls-canvas .operation-view .prev
+{
+    flex-grow:3; 
+    text-align: center;
+}
+.sound-controls-canvas .operation-view .prev image
+{
+    width: 44px; height: 44px;filter:grayscale(95%); 
+}
+
+
+.sound-controls-canvas .operation-view .play-in .play
+{
+    flex-grow:4; 
+    text-align: center;
+    display: none;
+} 
+.sound-controls-canvas .operation-view .play-in .pause
+{
+    flex-grow:4; 
+    text-align: center;
+    display: block;
+} 
+
+.sound-controls-canvas .operation-view .play-out .play
+{
+    flex-grow:4; 
+    text-align: center;
+    display: block;
+} 
+.sound-controls-canvas .operation-view .play-out .pause
+{
+    flex-grow:4; 
+    text-align: center;
+    display: none;
+} 
+
+
+.sound-controls-canvas .operation-view .play image
+{
+    width: 60px; height: 60px;
+}
+.sound-controls-canvas .operation-view .pause image
+{
+    width: 60px; height: 60px;
+}
+
+
+
+.sound-controls-canvas .operation-view .next
+{
+    flex-grow:3; 
+    text-align: center;
+}
+.sound-controls-canvas .operation-view .next image
+{
+   width: 44px; height: 44px;filter:grayscale(95%); 
+}
+
+/*用silder做滑动条*/
+.sound-controls-canvas .progress-view .pro-background
+{
+    flex:8; 
+ 
+}
+.silder-show {
+   display: inline-block;
+    width:90%; 
+}
+
+

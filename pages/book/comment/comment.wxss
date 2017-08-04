@@ -1,0 +1,97 @@
+/* pages/book/comment/comment.wxss */
+.page-scroll-view
+{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+.no-comment{
+	text-align:center;
+	padding-top:100px;
+	color:#999;
+}
+.comment-cvs{ padding: 0px 0px 50px 0px;}
+.comment-node{border-bottom: 1px solid #eee; padding: 10px 0px 10px 0px;}
+/**主评论*/
+.comment-item
+{
+    
+    display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:flex-start;
+    padding: 10px 25px 10px 25px;
+}
+.comment-item .comment-headimg{flex-grow:1; min-width: 30px; max-width: 30px;}
+.comment-item .comment-headimg image{ width: 30px; height: 30px; border-radius: 30px;}
+
+
+.comment-item .comment-text{flex-grow:9; padding:0px 0px 0px 20px;}
+.comment-item .comment-text .nickname{ color: #06c1ae;}
+.comment-item .comment-text .info{ color: #333; padding: 10px 0px 10px 0px;text-align:justify !important;}
+.comment-item .comment-text .datetime{ color: #999;display: inline; float:right; }
+/**从评论***/
+.comment-item-reply
+{ 
+    display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:flex-start;
+    padding: 5px 25px 5px 75px;
+    
+}
+.comment-item-reply .comment-text{flex-grow:9; padding:10px 10px 10px 10px;border-radius: 3px; border: 1px solid #eee; background-color: #f8f8f8;}
+.comment-item-reply .comment-text .nickname{color: #999;}
+.comment-item-reply .comment-text .info{color: #333; padding: 7px 0px 0px 0px;text-align:justify !important;}
+.comment-item-reply .comment-text .datetime{ color: #999;display: inline; float:right; }
+
+.comment-toform
+{ 
+    width: 100%; height: 50px; position: fixed; z-index: 1;
+    left: 0px; bottom: 0px; 
+    background-color: #f8f8f8; border-top: 1px solid #eee;
+    padding: 8px 8px 8px 8px;
+}
+
+.comment-toform view{ font-size: 12px; color: #999; background-color: #f0f0f0; border-radius: 5px; padding: 8px 5px 8px 5px;}
+
+.form-page-mask
+{
+    position: fixed; z-index: 2; width: 100%; height: 100%;left: 0px; top: 0px;
+    background-color: #000;opacity:0.3;
+    
+}
+.form-page-content
+{
+    position: fixed; z-index: 3; width: 100%; height: 100%;left: 0px; top: 0px; 
+    display: flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:flex-start;
+}
+.form-page-content .null-area
+{
+    flex-grow:5;
+    width: 100%;
+}
+.form-page-content .form-area
+{    
+    width: 100%;  height: 150px; padding: 15px;
+    background-color: #f8f8f8;   
+}
+.form-page-content .form-area .info
+{
+    border: 1px solid #eee; border-radius: 5px;
+    
+}
+.form-page-content .form-area .info .content
+{
+    height: 40px; 
+    width: 100%;
+    font-size: 14px; 
+    line-height: 16px;
+    padding: 5px;
+    background-color: #f0f0f0;
+}
+
+.form-page-content .form-area .button{ padding: 10px 0px 10px 0px;}

@@ -1,0 +1,5 @@
+/* pages/user/setting/protocol/protocol.wxss */
+.text-body
+{
+    padding: 20px; font-size:14px; line-height: 24px; color: #333; 
+}

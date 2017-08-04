@@ -1,0 +1,35 @@
+<!--pages/user/setting/sound/sound.wxml-->
+<view class="{{font}}">
+<view class="default">
+    <view class="title f5">CodeBook码书</view>
+    <view class="desc f2">不能带你看世界，就带世界来看你！</view>
+</view>
+
+<view class="font-range"  data-font="small" bindtap="updateUserFont" id='1'>
+    <view class="range-title f2">男声</view>
+    <block wx:if="{{sound=='1'}}">
+    <view class="range-icon"><image src="../../../images/tick.png" mode="widthFix"></image></view>
+    </block>
+</view>
+<view class="font-range"  data-font="small" bindtap="updateUserFont" id='2'>
+    <view class="range-title f2">女声</view>
+    <block wx:if="{{sound=='2'}}">
+    <view class="range-icon"><image src="../../../images/tick.png" mode="widthFix"></image></view>
+    </block>
+</view>
+
+<view  class="font-range"  data-font="default" bindtap="updateUserFont" id='3'>
+   <view class="range-title f2">男声(带情感)</view>
+    <block wx:if="{{sound=='3'}}">
+    <view class="range-icon"><image src="../../../images/tick.png" mode="widthFix"></image></view>
+    </block>
+</view>
+
+<view  class="font-range"  data-font="default" bindtap="updateUserFont" id='4'>
+   <view class="range-title f2">女声(带情感)</view>
+    <block wx:if="{{sound=='4'}}">
+    <view class="range-icon"><image src="../../../images/tick.png" mode="widthFix"></image></view>
+    </block>
+</view>
+<audio style="display:none" src="{{src}}" id="myAudio" class="audio"></audio>
+</view>

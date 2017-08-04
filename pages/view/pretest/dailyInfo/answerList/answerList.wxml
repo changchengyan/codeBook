@@ -1,0 +1,146 @@
+<!-- 渲染普通的单项数据 -->
+<template name="radio">
+  <view class="container">
+    <block wx:for="{{itemList.items}}">
+      <block wx:if="{{!itemList.answer.user_content}}">
+        <view class="list {{item.isSelect?'active':''}}" data-option="{{item.item}}" bindtap="tapRadio">
+          <view class="number"> {{letter[index]}}</view>
+          <view class="detail">
+            <text>{{item.content}}</text>
+            <block wx:if="{{item.imagepath}}">
+              <image src="{{item.imagepath}}" mode="widthFix"></image>
+            </block>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{itemList.answer.user_content}}">
+        <block wx:if="{{item.isSelect}}">
+          <view class="list {{item.correct=='true'?'success':'error'}}" data-option="{{item.item}}" bindtap="tapRadio">
+            <view class="number"> {{letter[index]}}</view>
+            <view class="detail">
+              <text>{{item.content}}</text>
+              <block wx:if="{{item.imagepath}}">
+                <image src="{{item.imagepath}}" mode="widthFix"></image>
+              </block>
+            </view>
+          </view>
+        </block>
+        <view wx:else class="list {{item.correct=='true'?'success':''}}" data-option="{{item.item}}" bindtap="tapRadio">
+          <view class="number"> {{letter[index]}}</view>
+          <view class="detail">
+            <text>{{item.content}}</text>
+            <block wx:if="{{item.imagepath}}">
+              <image src="{{item.imagepath}}" mode="widthFix"></image>
+            </block>
+          </view>
+        </view>
+      </block>
+
+    </block>
+  </view>
+</template>
+
+<!-- 渲染普通的多选数据 -->
+<template name="checkbox">
+  <view class="container">
+    <block wx:for="{{itemList.items}}">
+      <block wx:if="{{!itemList.answer.user_content}}">
+        <view class="list {{item.isSelect?'mulactive':''}}" data-option="{{item.item}}" bindtap="tapCheckbox">
+          <view class="number"> {{letter[index]}}</view>
+          <view class="detail">
+            <text>{{item.content}}</text>
+            <block wx:if="{{item.imagepath}}">
+              <image src="{{item.imagepath}}" mode="widthFix"></image>
+            </block>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{itemList.answer.user_content}}">
+        <block wx:if="{{item.isSelect}}">
+          <view class="list {{item.correct=='true'?'success':'error'}}" data-option="{{item.item}}" bindtap="tapCheckbox">
+            <view class="number"> {{letter[index]}}</view>
+            <view class="detail">
+              <text>{{item.content}}</text>
+              <block wx:if="{{item.imagepath}}">
+                <image src="{{item.imagepath}}" mode="widthFix"></image>
+              </block>
+            </view>
+          </view>
+        </block>
+        <view wx:else class="list {{item.correct=='true'?'active-success':''}}" data-option="{{item.item}}" bindtap="tapCheckbox">
+          <view class="number"> {{letter[index]}}</view>
+          <view class="detail">
+            <text>{{item.content}}</text>
+            <block wx:if="{{item.imagepath}}">
+              <image src="{{item.imagepath}}" mode="widthFix"></image>
+            </block>
+          </view>
+        </view>
+      </block>
+
+    </block>
+  </view>
+
+  <!--<view class="btn" wx:if="{{!itemList.answer.user_content}}" bindtap="tapSelect">确定</view>-->
+
+  <view class="btn-bg" wx:if="{{!itemList.answer.user_content}}">
+    <view wx:if="{{!multiselect}}" class="btn-no">确定</view>
+    <block wx:else>
+      <view class="btn" bindtap="tapSelect">确定</view>
+    </block>
+  </view>
+
+</template>
+
+
+<!-- 页面题目模板 -->
+<template name="movie-list">
+
+  <view class="header">
+    <view class="count_num">
+      <text class="done">{{threeQuestion[1].question.num}}</text>/
+      <text>{{questions.totalNum}}</text>
+    </view>
+    <view class="question_detail">
+	    <view class="xuanz">{{itemList.question.type}}</view>
+	    <view class="title">
+        <import src="../../../../template/richText/richText.wxml"/>
+        <template is="richText" data="{{infolist:itemList.question.title.infolist}}" /> 	      
+	   </view>
+   </view>  
+  </view>
+  <template wx:if="{{itemList.question.type == '多选'}}" is="checkbox" data="{{itemList,idx,answers,letter,multiselect}}" />
+  <template wx:else is="radio" data="{{itemList,idx,answers,letter}}" />
+  <template is="tip" data="{{threeQuestion}}"></template>
+</template>
+
+
+<!-- 试题详解 -->
+
+<template name="tip">
+  <block wx:if="{{threeQuestion[1].answer.user_content}}">
+    <view class="answer_daily">
+      <view class="result">
+        <block wx:if="{{threeQuestion[1].answer.mark_right==1}}">
+          <view class="contant">正确答案是
+            <text class="right">{{threeQuestion[1].question.allRight}}</text> ，您的答案是
+            <text class="right">{{threeQuestion[1].answer.allSelect}}</text>，回答正确。</view>
+        </block>
+        <block wx:else>
+          <view class="contant">正确答案是
+            <text class="right">{{threeQuestion[1].question.allRight}}</text> ，您的答案是
+            <text class="error">{{threeQuestion[1].answer.allSelect}}</text>，回答错误。</view>
+        </block>
+
+        <view class="head">
+          <view class="head_bg"></view>
+          <view class="text">答题解析</view>
+        </view>
+        <view class="detail">
+          <import src="../../../../template/richText/richText.wxml"/>
+          <template is="richText" data="{{infolist:threeQuestion[1].question.tip.infolist}}" />           
+      </view>
+	</view>
+    </view>
+  </block>
+</template>

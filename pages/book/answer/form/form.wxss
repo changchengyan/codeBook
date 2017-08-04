@@ -1,0 +1,65 @@
+/* pages/book/answer/form/forom.wxss */
+.page-scroll-view
+{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+.teacher-area
+{
+    padding: 15px;
+    background-color: #fff;
+    border-bottom: 5px solid #f0f0f0;
+    
+}
+.teacher-area .head-info
+{
+    display: flex;
+    flex-direction:row;
+    align-items:center;
+
+}
+.teacher-area .head-info .img{flex-grow:1; max-width: 60px; min-width: 60px;}
+.teacher-area .head-info .img image{ width: 50px; height: 50px; border-radius: 50px;}
+.teacher-area .head-info .text{flex-grow:5;}
+.teacher-area .head-info .text .nickname{ padding: 0px 0px 5px 0px;}
+.teacher-area .head-info .text .other{ color: #999;}
+.teacher-area .sales-info{ padding: 0px 0px 0px 60px;}
+.teacher-area .sales-info .text{color: #555; line-height: 18px;}
+
+.form-area
+{
+    padding: 15px;
+    background-color: #fff;
+    border-bottom: 5px solid #f0f0f0;
+}
+.form-area .form-title
+{
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:flex-start;
+    padding: 0px 0px 10px 0px;
+}
+.form-area .form-title .title{ font-size: 14px; color: #555;flex-grow:1; }
+.form-area .form-title .more{ font-size: 12px; color: #999;flex-grow:1; text-align: right; }
+
+.form-area .content-area
+{
+    border: 1px solid #ccc; padding: 5px;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+}
+.form-area .content-area .content
+{
+    
+    font-size: 14px;
+    height: 80px;
+    width: 100%;
+}
+.form-area .button-area{ padding: 20px 0px 10px 0px;}
+.form-area .button-area button{ width: 60%;}
+
+
+.sales-info{ padding: 15px; color: #999;}
+.sales-info .title{ padding: 5px 0px 5px 0px; color: #777;}

@@ -1,0 +1,31 @@
+<scroll-view class="page-scroll-view {{font}}"   scroll-y="true" scroll-x="true" bindscroll="onScroll" bindscrolltolower="loadBookSourcePDFImgList"   scroll-top="{{scroll.top}}" scroll-left="{{scroll.left}}">
+<!--<view class="choose-see-type">
+    <view class="see-type-box f2 {{selectedTypeOne}}" bindtap="chooseListType" data-type="one">
+        单页模式
+    </view>
+    <view class="see-type-box f2 {{selectedTypeTwo}}" bindtap="chooseListType" data-type="two">
+        列表模式
+    </view>
+</view>-->
+<view class="album-list-canvas" style="width:{{zoom}}%"  bindtouchstart="touchStart"  bindtouchmove="touchMove" bindtouchend="touchEnd" catchtap="showSilder">
+    <block wx:if="{{imgList.count >=0}}">  
+    <view  class="item-canvas" wx:for="{{imgList.list}}" data-index="{{index}}">
+        <image src="{{item.miniImgurl}}" mode="widthFix"></image>
+            <view class="img-name">
+            <!--<text class="f2">{{index}}</text>-->
+        </view>
+    </view>   
+    </block>
+</view>
+<view class="bottom-box" wx:if="{{ifShowSilder}}" catchtouchstart="sliderStart" catchtouchend="sliderEnd">
+  <view class="slider-num f1">100%</view>  
+  <view class="slider-box"><slider backgroundColor="#eee" selected-color="#cfebeb" left-icon="cancel" class="silder-show" min="100"  max="500" bindchange="silderChange" value="{{zoom}}"/></view>
+  <view class="slider-num f1">500%</view>
+</view>
+<block wx:if="{{imgList.count ==-1}}">    
+    <view class="list-loadding">
+            <view class="icon"><image src="{{LOADDING_ICON}}"></image></view>
+            <view class="text f1"><text>{{LOADDING_TEXT}}</text></view>            
+    </view>
+</block>
+</scroll-view>

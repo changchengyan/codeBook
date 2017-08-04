@@ -1,0 +1,37 @@
+<view class="{{font}}">
+
+<view class="teacher-area">
+    <view class="head-info">
+        <view class="img"><image src="{{book.author_pic}}"></image></view>
+        <view class="text">
+            <view class="nickname f2">{{book.author}}</view>
+            <view class="other f1">已回答{{book.answer_user_count}}位读者，共{{book.answer_count}}个问题</view>
+        </view>
+    </view>
+    <view class="sales-info">
+        <view class="text f1"><text>{{book.author_info}}</text></view>
+    </view>
+</view>
+<view class="form-area">
+    <form bindsubmit="formSubmit">
+        <view class="form-title">
+            <view class="title">我要提问</view>
+           <view class="more" bindtap="toHelp">提问须知</view>
+        </view>
+        <view class="content-area">
+            <textarea name="info" class="content" type="text" placeholder="点击此处输入您的问题..." value="{{formInfo}}" focus/>    
+        </view>
+        <view class="button-area">
+           <button class="pub-submit" type="default" form-type="submit">写好了，提交问题</button>
+        </view>
+    </form>
+</view>
+
+<view class="sales-info f1">
+   <view class="title f2">回复说明</view>
+   <view>1、您提交问题后将即时通知作者；</view>
+   <view>2、将在24小时之内得到回复，请留意“我的消息”；</view>
+   <view>3、码书阅读将筛选部分问答加入“知识开放计划”。</view>
+</view>
+
+</view>

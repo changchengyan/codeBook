@@ -1,0 +1,34 @@
+<!--pages/view/ebook/read/read.wxml-->
+<view class="{{font}}">
+<view class="title f6"><text>{{appInstance.article_title}}</text></view>
+<view class="datetime f1">更新：{{appInstance.createtime}}</view>
+    <view class="desc-canvas">
+        <view class="desc-text-base desc-text">
+            <text>{{appInstance.article_desc}}</text>
+        </view>
+    </view>
+
+    <view class="info"> 
+  <view wx:if="{{appInstance.seed_info_mp3_url}}" class="audio-box">
+	<view class="contain">
+    	<view class="pic">
+    		<image class="img" src="{{appInstance.pic}}"></image>
+    		<block wx:if="{{playing}}">
+    		<view class="audio_play" bindtap="audioPause">
+    			<view class="pause"></view>	    			
+    		</view>
+    		</block>
+    		<block wx:else>
+    		<view class="audio_play" bindtap="audioToPlay">
+    			<view class="play"></view>
+    		</view>
+    		</block>
+    	</view>
+    	<view class="name">{{appInstance.article_title}}</view>
+    	<view class="time">{{appInstance.currentPosition}}</view>
+    </view>
+  </view>
+        <import src="../../../template/richText/richText.wxml"/>
+        <template is="richText" data="{{infolist:appInstance.instance_info.infolist}}" />       
+    </view>
+</view>

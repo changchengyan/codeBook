@@ -1,0 +1,4 @@
+<!--pages/user/setting/protocol/protocol.wxml-->
+<view class="text-body">
+    <text>{{codeBookConfig.protocol}}</text>
+</view>

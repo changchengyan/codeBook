@@ -1,0 +1,36 @@
+<view class="{{font}}">
+<view class="menu-name f2">帐号信息</view>
+<view class="menu-tab">
+    <view class="menu line">
+        <view class="title f2">微信</view>
+        <view class="text f1">{{weixinUserInfo.nickname}}</view>
+        
+    </view>
+    <view class="menu">
+        <view class="title f2">帐号</view>
+        <view class="text f1">{{weixinUserInfo.uid}}</view>
+        
+    </view>
+</view>
+<view class="menu-name f2">阅读使用</view>
+<view class="menu-tab">
+    <view class="menu line"  data-page="font" bindtap="toPage">
+        <view class="title f2">字号</view>
+        <view class="text f1">{{fontText}}</view>
+        <view class="arrow"><image src="../../images/icon_tools_arrow.png"></image></view>
+    </view>
+    <view class="menu line"  data-page="sound" bindtap="toPage">
+        <view class="title f2">人声</view>
+        <view class="text f1">{{soundText}}</view>
+        <view class="arrow"><image src="../../images/icon_tools_arrow.png"></image></view>
+    </view>
+    <view class="menu line" data-page="about" bindtap="toPage">
+        <view class="title f2">关于</view>
+        <view class="arrow"><image src="../../images/icon_tools_arrow.png"></image></view>
+    </view>
+    <view class="menu" data-page="protocol" bindtap="toPage">
+        <view class="title f2">协议</view>
+        <view class="arrow"><image src="../../images/icon_tools_arrow.png"></image></view>
+    </view>
+</view>
+</view>

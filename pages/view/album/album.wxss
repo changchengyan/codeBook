@@ -1,0 +1,186 @@
+/* pages/view/album/album.wxss */
+.page-scroll-view
+{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+.album-list-canvas
+{
+   
+}
+
+.album-list-canvas .list-head
+{
+   
+    display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:flex-start;
+    background-color: #06c1ae;
+    padding: 15px;
+    color: #fff;
+
+}
+.album-list-canvas .list-head .image-canvas
+{   
+    width: 60px;
+    max-width:60px;
+    min-width:60px;
+    padding: 3px 0px 0px 0px;
+    flex-grow:1; 
+}
+.album-list-canvas .list-head .image-canvas image
+{
+   width: 60px; height: 60px;
+}
+.album-list-canvas .list-head .text-canvas
+{   
+   padding: 0px 15px 0px 15px;
+   flex-grow:8; 
+}
+.album-list-canvas .list-head .text-canvas .instance_name{ padding: 0px 0px 5px 0px;}
+
+.album-list-canvas .list-head .text-canvas .instance_desc{
+    
+    color: #cfebeb;overflow:hidden; 
+    text-overflow:ellipsis;
+    display:-webkit-box; 
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+
+}
+.album-list-canvas .list-head  .instance_more{ 
+    flex-grow:1;  max-width: 30px;
+    width: 30px; min-width: 30px; padding: 23px 0px 20px 0px; text-align: center;
+    }
+.album-list-canvas .list-head  .instance_more image{ width: 10px;height:17px;}
+
+.album-list-canvas .list-title
+{ 
+    padding: 10px 20px 10px 20px; 
+    background-color: #04bca9; color: #fff;
+}
+
+
+.album-list-canvas .item-canvas{ padding: 10px;display: flex;flex-direction: row;flex-wrap: wrap;}
+.album-list-canvas .item-canvas  .img image{ width: 100%; }
+.album-list-canvas .item-canvas  .name{ color: #999; font-size: 12px; padding: 3px 0px 12px; width: 100%;overflow: hidden;text-overflow: ellipsis; }
+.free-img {
+  width: 100%;
+}
+/*收费样式*/
+.pay-img {
+ 
+  width: 33%;
+  padding: 10rpx;
+
+}
+page {
+  width: 100%;
+  height: 100%; 
+}
+.template-black-mask {
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+  z-index: 1000;
+}
+.template-semicircle {
+  position: absolute;
+  top: -70rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items:flex-start;
+  padding-top: 22rpx;
+  width: 137rpx;
+  height: 137rpx;
+  border-radius: 50%;
+  background: #fff;
+}
+.template-semicircle image {
+  width: 40rpx;
+}
+.template-pay-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top:50%;
+  margin: -150px auto 0;
+  z-index: 10000;
+}
+.template-pay-box .info-box {
+  display: flex;
+  width: 70%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 30rpx;
+  background: #fff;
+  overflow: hidden
+}
+.template-pay-box .to-close {
+  width: 100%;
+  padding: 25rpx 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 23rpx;
+}
+.pay-info-form {
+
+  width: 100%;
+}
+.pay-info-item {
+   display: flex;
+   flex-direction: row;
+  width: 100%;
+  padding-left: 20rpx;
+  font-size: 32rpx;
+  justify-content: flex-start;
+  align-items: center;
+}
+.pay-info-title {
+  margin: 10rpx 20rpx 0 0;
+}
+.to-close-box {
+  width: 30rpx;
+}
+.to-close-box  image {
+  width: 100%;
+}
+.info-box .money {
+  font-size: 50rpx;
+  padding-bottom: 30rpx;
+  color: #06c1ae;
+}
+.info-box .name {
+  font-size: 32rpx;
+  color: #333;
+}
+.info-box .num {
+  font-size: 20rpx;
+  color: #999;
+}
+.to-pay-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;  
+  height: 90rpx;
+  margin-top: 40rpx;
+  background-color: #06c1ae;
+  color: #fff;
+  font-size: 36rpx;
+  border-radius: 0;
+}

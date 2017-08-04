@@ -1,0 +1,84 @@
+<!--pages/view/pretest/pretest.wxml-->
+<view class="" >
+	<!--<view class="result "  style="display:none;">
+		<view class="reply">
+			<view></view>
+			<view class="text">答对</view>
+			<view class="number"><text>12</text>/15</view>
+		</view>
+		<view class="detail_data">
+			<view class="time">
+				<text class="info">10'53''</text>
+				<text>实际用时</text>
+			</view>
+			<view class="people">
+				<text class="info">12%</text>
+				<text>已击败考生</text>
+			</view>
+		</view>
+		<view class="info_text">答题情况</view>
+		<view class="detail_result">
+			<view class="contain">
+				<view class="right">1</view>
+				<view class="right">2</view>
+				<view class="error">3</view>
+				<view class="right">4</view>
+				<view class="right">5</view>
+				<view class="right">6</view>
+				<view class="error">7</view>
+				<view class="right">8</view>
+			</view>
+			
+		</view>
+	
+	</view>-->
+	<view class="result result_{{resultType}}" >
+		<view class="reply ">
+			<view class="canvas">
+				<canvas style="width: 110px; height: 110px;margin:auto" canvas-id="isCanvas"></canvas>
+			</view>
+			<view class="contain reply_mock">
+				<view class="text">得分</view>
+				<view class="number"><text>{{answerResult.user_score}}</text></view>
+			</view>
+       <view class="reply_daily">
+        <view></view>
+        <view class="text">答对</view>
+        <view class="number"><text>{{answerResult.right_num}}</text>/{{answerResult.seedPretestAnswerQuestion.length}}</view>
+		  </view>		
+		</view>
+    
+		<view class="detail_data">
+			<view class="time">
+				<text class="info">{{answerResult.cost_time}}</text>
+				<text>实际用时</text>
+			</view>
+			<view class="people">
+				<text class="info">{{answerResult.rank_percent}}</text>
+				<text>已击败考生</text>
+			</view>
+			<view class="rightNum">
+				<view class="info"><text>{{answerResult.right_num}}</text>题</view>
+				<text>答对</text>
+			</view>
+		</view>
+		<view class="info_text">答题情况</view>
+		<view class="detail_result">
+			<view class="contain" >
+        <view class="result-box" wx:for="{{answerResult.seedPretestAnswerQuestion}}">
+          <view class="{{item.mark_right==0?'error':'right'}}">{{item.number}}</view>
+        </view>
+				
+				
+			</view>
+			
+		</view>
+		<view class="analysis">
+			<view id="all" class="{{click}}" bindtap="toAnalysis">全题解析</view>
+			<view id="error" class="{{click}}" bindtap="toAnalysis">错题解析</view>
+		</view>
+    	<view class="agin" bindtap="answerAgin">再做一次</view>
+	</view>
+	
+	
+</view>

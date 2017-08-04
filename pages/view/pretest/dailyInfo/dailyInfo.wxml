@@ -1,0 +1,62 @@
+<!--index.wxml-->
+
+<import src="answerList/answerList.wxml" />
+<import src="../quick/quick.wxml" />
+
+<!-- 题目展示页面 -->
+<template name="movie-lists">
+
+  <view class='swiper-lists' bindtouchend='touchEnd' bindtouchstart='setEvent'>
+    <block wx:for="{{threeQuestion}}" wx:for-item="itemList" wx:for-index="idx">
+      <scroll-view scroll-y="true" wx:if="{{idx == 0}}" class='swiper-list prev' animation="{{swiper.animationO}}">
+
+        <template is="movie-list" data="{{idx,itemList,answers,layerlayer,letter,threeQuestion,questions}}" />
+      </scroll-view>
+      <scroll-view scroll-y="true" wx:if="{{idx == 1}}" class='swiper-list' animation="{{swiper.animationT}}">
+        <template is="movie-list" data="{{idx,itemList,answers,layerlayer,letter,threeQuestion,questions,multiselect}}" />
+      </scroll-view>
+      <scroll-view scroll-y="true" wx:if="{{idx == 2}}" class='swiper-list next' animation="{{swiper.animationS}}">
+        <template is="movie-list" data="{{idx,itemList,answers,layerlayer,letter,threeQuestion,questions}}" />
+      </scroll-view>
+    </block>
+  </view>
+</template>
+
+  <view class="answer-sheet {{answerSheetNegative ? 'negative' : ''}}" catchtap="toggleAnswerSheet">
+    <view class="mask" data-ele="mask"></view>
+    <view class="answer-sheet-content">
+      <view class="title" >
+        <view bindtap="answerAgin" class="restart">再做一次</view>
+        <view class="quick-icon">
+          <view class="right">{{right_num}}</view>
+          <view class="error">{{error_num}}</view>
+          <!--<view class="noanswer">{{noanswer_num}}</view>-->
+          <view class="quick" data-ele="title"></view>
+        </view>
+      </view>
+      <template is="question-list" data="{{answerSheetNegative,answerResultsList}}" />
+    </view>
+  </view>
+
+
+<loading hidden="{{isLoading}}">加载中...</loading>
+<!-- 第一次进来的手势提示begin-->
+<block wx:if="{{isFistAnswer}}">
+	<view class="firstTip" bindTap="closeFirstTip">
+		<view class="_mask"></view>		
+		<view class="text"><text>答题完毕后</text><text>左划进入下一题哦~</text></view>
+		<view class="icon"></view>
+	</view>
+</block>
+<!-- 第一次进来的手势提示end-->
+
+<block wx:if="true">
+  <template is="movie-lists" data="{{answers,layerlayer,threeQuestion,isLoading,letter,swiper,questions,multiselect}}" />
+</block>
+<block wx:else>
+  <view class="metadata">
+    <view>暂无数据</view>
+  </view>
+</block>
+<import src="../../../template/template.wxml"/>
+<template is="template-pay-box" data="{{price:template_pay.price,payShow:template_pay.payShow,sourceName:template_pay.sourceName,sourceNum:template_pay.sourceNum,clicked:template_pay.clicked}}" />

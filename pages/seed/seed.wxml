@@ -1,0 +1,75 @@
+<!--pages/seed/seed.wxml-->
+
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" class="pic-swiper" circular="{{circular}}" style="height:{{maxHeight}}px">
+  <block wx:for="{{seedInfo.imglist}}">
+    <swiper-item class="swiper-item">
+      <image src="{{item.src}}" class="slide-image" mode="widthFix" bindload="imgSize" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class="{{font}}">
+<view class="title f5"><text>{{seedInfo.seed_name}}</text></view>
+<view class="price-info">
+<block wx:if="{{seedInfo.sale_price != '0.00'}}">
+  <view class="price" ><text class="f1">￥</text><text class="f4">{{seedInfo.sale_price_left}}</text><text class="f1">.{{seedInfo.sale_price_right}}</text></view>
+  </block>
+  <block wx:else>
+   <view class="price"><text class="f4">免费</text></view>
+   </block>
+  <block wx:if="{{ifbought}}">
+    <view class="bought-seed">
+      已购买
+    </view>
+  </block>
+</view>
+    <view class="desc-canvas">
+        <view class="desc-text-base seed-desc">
+            <text>{{seedInfo.seed_desc}}</text>
+        </view>
+    </view>
+    <view class="info-canvas">
+    <view class="mark-title f3"><text>商品详情</text></view>
+    <view class="info"> 
+       <import src="../template/richText/richText.wxml"/>
+        <template is="richText" data="{{infolist:seedInfo.instance_info.infolist}}" /> 
+    </view>
+    </view>
+    <view class="buy-visibility"></view>   
+    <block wx:if="{{!canView}}">
+    	<block wx:if="{{seedInfo.sales_status==0}}">
+	    	<view class="buy-canvas buy-stop"><view class="button f3">停售</view></view>
+	    </block>
+	    <block wx:else>
+	    	<view class="buy-canvas"><view class="button f3" bindtap="openFastBuy"  >立即购买</view></view>
+	    </block>
+    </block>
+    
+
+</view>
+<!--实体商品弹框-->
+<import src="../template/template.wxml"/>
+<template is="seed-default-info" data="{{UnitPrice:seedDefalutPay.UnitPrice,clicked:seedDefalutPay.clicked,seedDefalutShow:seedDefalutPay.seedDefalutShow,seedName:seedDefalutPay.seedName,seedNum:seedDefalutPay.seedNum,totalMoney:seedDefalutPay.totalMoney,userName:seedDefalutPay.userName,uersPhone:seedDefalutPay.uersPhone,uersAddress:seedDefalutPay.uersAddress}}" />
+<!--实体商品弹框 end-->
+
+<!--购买成功-->
+<block wx:if="{{buySuccess}}">
+  <view class="success-bg" style="width:{{screenWidth}}px,height:{{screenHeight}}px"></view>
+  <view class="success-word">
+    <view class="tip-word">
+       <icon type="success" size="30"/>
+      <view class="">购买成功</view>
+    </view>
+  <view class="button " bindtap="toSeeOrder">查看订单</view>
+  <view class="button" bindtap="backContinue">返回继续</view>
+  </view>
+</block>
+<!--购买成功 end-->
+<!--分享begain-->
+<block wx:if="{{isShare}}">
+<view class="pub-navigation">
+    <view class="home"  bindtap="toHome"><image src="{{ICON_HOME_PATH}}"></image></view>
+    <view class="user"  bindtap="toUser"><image src="{{ICON_USER_PATH}}"></image></view>
+</view>
+<!--分享end-->
+</block>

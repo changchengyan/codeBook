@@ -1,0 +1,123 @@
+<!--pages/view/question/question.wxml-->
+<view class="{{font}}">
+<!--content详情-->
+<view class="content">
+  <view class="image">
+    <image class="image" mode="widthFix" src="{{seedInfo.seed_pic}}"></image>
+  </view>
+  <view class="info">
+    <view class="f3 text">
+      <text>{{seedInfo.seed_name}}</text>
+    </view>
+    <view class="f2 text">
+      <text>{{seedInfo.seed_desc}}</text>
+    </view>
+    <view class="f1 ">
+      <text>被提问{{totalCount}}次，已回答{{answerCount}}个</text>
+    </view>
+  </view> 
+  <view style="clear:both;"></view> 
+</view>
+<!--content详情END-->
+  <view class="f3 question_start">
+    <view class="text">
+      <text>我的提问</text>
+    </view>
+  </view>
+
+<!--form提问区-->
+<form bindsubmit="toQuestion">
+  <!--提问-->
+  <view class="form-area">    
+    <view class="f2 content-area">
+    <block wx:if="{{!template_pay.payShow}}">
+    <textarea name="info" class="info" type="text" placeholder="请在此输入您的问题描述..." value="{{question}}" />
+    </block>
+    <block wx:if="{{template_pay.payShow}}">
+    <textarea class="info" type="text" />
+    </block>
+    </view>
+  </view>
+  <!--提问END-->
+  <view class="question-button">
+  <block wx:if="{{seedInfo.sales_status==1}}">
+  <block wx:if="{{recordList.list.length==0}}">
+    <button class="submit" type="default" form-type="submit">写好了，提交问题（￥{{seedInfo.sale_price}}）</button>
+  </block>
+    <block wx:if="{{recordList.list.length!=0}}">
+    <button class="submit" type="default" form-type="submit">继续提问（￥{{seedInfo.sale_price}}）</button>
+  </block>
+  </block>
+  <block wx:if="{{seedInfo.sales_status==0}}">
+  <button class="submit" style="background-color:#ddd;">提问已结束</button>
+  </block>  
+  </view>
+</form>
+<!--form提问区END-->
+
+
+<!--加载-->
+<block wx:if="{{loadingRecordList}}" >    
+    <view class="list-loadding">
+            <view class="icon"><image src="{{LOADDING_ICON}}"></image></view>
+            <view class="text f2"><text>{{LOADDING_TEXT}}</text></view>            
+    </view>
+</block>
+<!--加载END-->
+<block wx:if="{{!loadingRecordList}}" >  
+<!--list问题列表区-->
+
+<view class="question-list" wx:for="{{recordList.list}}" data-node="{{item}}">
+  <view class="headimg">
+    <image src="{{userInfo.avatarUrl}}"></image>
+  </view>
+  <view class="question-answer">
+    <view class="f2 question-answer-title">
+      <view class="question-answer-name f1">{{userInfo.nickName}}</view>
+      <view class="question-answer-time f1">{{item.quest_datetime}}</view>
+      <view style="clear:both"></view>
+    </view>
+    <view class="question-answer-item f3">
+      <text>{{item.quest_title}}</text>
+    </view>
+    <view class="question-answer-info">
+      <block wx:if="{{item.answer_examine==2}}">
+        <view class="time f1">回答时间 {{item.answer_datetime}}</view>
+        <view style="clear:both"></view>
+        <view class="text f3">
+          <text>{{item.answer_title}}</text>
+        </view>
+      </block> 
+      <block wx:if="{{item.answer_examine!=2}}">
+        <view class="text f3">
+          <text>待回答...</text>
+        </view>
+      </block>       
+    </view>
+    <block wx:if="{{item.answer_examine==2&&item.answer_sound!=''}}">
+    <view class="question-answer-voice" data-node="{{index}}"  bindtap="clickPlay">
+      <image src="{{playPic[index]}}"></image>  
+      <view class="text">点击播放回答{{item.duration}}</view>
+      <view class="sharp"></view>
+    </view>    
+    <view style="clear:both"></view>
+    </block>
+  </view>
+</view>
+<!--list问题列表区END-->
+</block>
+</view>
+<!--音频-->
+<audio style="display:none;" src="{{audioSrc}}" id="myAudio" controls="false" bindended="playEnd"></audio>
+<!--音频END-->
+<!--收费弹框-->
+<import src="../../template/template.wxml"/>
+<template is="template-pay-box" data="{{price:template_pay.price,payShow:template_pay.payShow,sourceName:template_pay.sourceName,sourceNum:template_pay.sourceNum,clicked:template_pay.clicked}}" />
+
+<!--分享-->
+<block wx:if="{{isShare}}">
+<view class="pub-navigation">
+    <view class="home"  bindtap="toHome"><image src="{{ICON_HOME_PATH}}"></image></view>
+    <view class="user"  bindtap="toUser"><image src="{{ICON_USER_PATH}}"></image></view>
+</view>
+</block>

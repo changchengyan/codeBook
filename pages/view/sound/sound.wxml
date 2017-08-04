@@ -1,0 +1,106 @@
+<!--pages/view/sound/sound.wxml-->
+<!-- page-list,page-lyric,page-info 三个view构成，目前只有 page-list  -->
+<scroll-view class="page-list {{font}}" scroll-y="true" enable-back-to-top  bindscrolltolower="loadMoreList">
+    <!-- 基本信息 -->
+    <view class="list-head"  bindtap="toInstance">
+            <view class="image-canvas"><image src="{{bookMatch.match_pic}}" mode="widthFix"></image></view>
+            <view class="text-canvas">
+                <view class="instance_name f3">{{bookMatch.match_title}}</view>
+                <view class="instance_desc f2"><text>{{bookMatch.match_desc}}</text></view>
+            </view>            
+            <view class="instance_more"  ><image src="../../images/icon_tools_arrow2.png" mode="widthFix"></image></view>
+    </view>
+    
+    <!-- 列表信息 -->
+    <view class="sound-list-canvas">
+        
+        <block wx:if="{{sound.total_count > 0}}">
+        <view class="list-title f4"><text>音频列表</text></view>
+        <view class="item-canvas">
+            <view class="{{item.class}}" wx:for="{{sound.list}}" data-index="{{index}}" bindtap="selectPlay">
+                <view class="number">{{index+1}}</view>
+                <view class="name f3">{{item.file_name}}</view>
+                <view class="time f1">{{item.time_length}}</view>
+            </view>
+            
+        </view>
+        </block>
+    </view>
+    <!-- 加载中 -->
+    <block wx:if="{{loadding}}">    
+        <view class="list-loadding">
+            <view class="icon"><image src="{{LOADDING_ICON}}"></image></view>
+            <view class="text f1"><text>{{LOADDING_TEXT}}</text></view>            
+        </view>
+    </block>
+    <!-- 无数据信息 -->
+    <block wx:if="{{sound.total_count == 0}}">
+        <view class="nodata-canvas">
+            <image src="{{NODATA_ICON}}"  mode="widthFix"></image>
+            <view class="text f2"><text>{{NODATA_TEXT}}</text></view>
+        </view>
+    </block>
+
+    <!-- 控制台 -->
+    <block wx:if="{{sound.total_count > 0}}">
+    <view class="sound-controls-canvas">
+        <!--<view class="split-view">
+            <view></view>
+            <view></view>
+            <view></view>
+        </view>-->
+        <view class="progress-view">
+            <view class="time-left">{{timeBeginText}}</view>
+            <view class="pro-background" id="pro-background" >
+                <!--<view class="pro-load" style="width:{{proLoadWidth}}"></view>
+                <view class="pro-light" style="width:{{proLightWidth}}"></view>
+                <div class="pro-now" id="pro-now" style="left:{{proTouch.proNowLeft+'%'}}" catchtouchstart="dragStart" catchtouchmove="dragMove" catchtouchend="dragEnd"></div>-->
+                <slider bindtouchstart="dragStart" bindchange="sliderChange"  backgroundColor="#eee" selected-color="#cfebeb" left-icon="cancel" class="silder-show" disabled="{{disabled}}" value="{{progressValue}}" max="{{progressMax}}" />
+            </view>
+            <view class="time-right">{{timeEndText}}</view>
+        </view>
+        <view class="operation-view">
+            <view class="prev">
+                <image src="../../images/sound-icon-prev.png" bindtap="audioPrev"></image>
+            </view>
+            <view class="{{playPauseStyle}}">
+                <view class="play">
+                    <image src="../../images/sound-icon-play.png" bindtap="audioToPlay"></image>
+                </view>
+                <view class="pause">
+                    <image src="../../images/sound-icon-pause.png" bindtap="audioPause"></image>
+                </view>
+            </view>
+            
+            <view class="next">
+                <image src="../../images/sound-icon-next.png" bindtap="audioNext"></image>
+            </view>
+        </view>
+    </view>
+    <view class="sound-controls-visibility"></view>
+    </block>
+</scroll-view>
+
+<block wx:if="{{isShare}}">
+<view class="pub-navigation">
+    <view class="home"  bindtap="toHome"><image src="{{ICON_HOME_PATH}}"></image></view>
+    <view class="user"  bindtap="toUser"><image src="{{ICON_USER_PATH}}"></image></view>
+</view>
+</block>
+<import src="../../template/template.wxml"/>
+<template is="template-pay-box" data="{{price:template_pay.price,payShow:template_pay.payShow,sourceName:template_pay.sourceName,sourceNum:template_pay.sourceNum,clicked:template_pay.clicked}}" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

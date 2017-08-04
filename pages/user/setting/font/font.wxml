@@ -1,0 +1,26 @@
+<!--pages/user/setting/font/font.wxml-->
+<view class="default">
+    <view class="title f5">CodeBook码书</view>
+    <view class="desc f2">不能带你看世界，就带世界来看你！</view>
+</view>
+
+<view class="font-range small"  data-font="small" bindtap="updateUserFont">
+    <view class="range-title f2">小号文字</view>
+    <block wx:if="{{font=='small'}}">
+    <view class="range-icon"><image src="../../../images/tick.png" mode="widthFix"></image></view>
+    </block>
+</view>
+
+<view  class="font-range default"  data-font="default" bindtap="updateUserFont">
+    <view class="range-title f2">标准文字</view>
+    <block wx:if="{{font=='default'}}">
+    <view class="range-icon"><image src="../../../images/tick.png" mode="widthFix"></image></view>
+    </block>
+</view>
+
+<view class="font-range big"  data-font="big" bindtap="updateUserFont">
+    <view class="range-title f2">大号文字</view>
+    <block wx:if="{{font=='big'}}">
+    <view class="range-icon"><image src="../../../images/tick.png" mode="widthFix"></image></view>
+    </block>
+</view>

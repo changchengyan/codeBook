@@ -1,0 +1,222 @@
+/* pages/view/pretest/result/result.wxss */
+/* 日常练习答题报告*/
+.result{
+	display: flex;
+    flex-direction:column;
+    justify-content:flex-start;
+}
+.result .reply{
+	
+	width:128px;
+	height:128px;
+	border:1px solid #eee;
+	border-radius:50%;
+	margin:0 auto;
+	margin-top:60rpx;
+	text-align:center;
+	display: flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+}
+.result .reply .canvas{
+	margin:auto;
+}
+.result .reply .contain{
+  position:absolute;
+  left:0;
+  top:0;
+	width:128px;
+	height:128px;
+}
+.result .reply .text{
+	font-size:12px;
+	color:#999;
+	margin-top:25px;
+}
+.result_daily .reply .number{
+	color:#333;
+	font-size:14px;
+	/*margin-top:7px;*/
+}
+.result_mock .reply .number{
+	color:#333;
+	font-size:40px;
+	margin-top:7px;
+}
+.result_daily .reply .number text{
+	font-size:30px;
+}
+.result .detail_data{
+	display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    height:80rpx;
+    margin-top:22rpx;
+    margin-bottom:22rpx;
+    text-align:center;
+    font-size:10px;
+    color:#666;
+    line-height:20px;
+}
+.result .detail_data text{
+	display:block;
+}
+.result .detail_data .time{
+	flex:1;
+	border-right:1px solid #eee;
+	
+	
+}
+.result .detail_data .info{
+	font-size:16px;
+}
+.result .detail_data .people{
+	flex:1;
+}
+.result_mock .detail_data .people{
+	flex:1;
+	border-right:1px solid #eee;
+}
+.result .detail_data .rightNum{
+	flex:1;
+}
+.result .detail_data .rightNum text{
+	display:inline;
+}
+/*日常*/
+.result_daily .reply .contain {
+  display: none;
+}
+.result_daily .rightNum {
+   display: none;
+}
+.result_daily .reply_mock {
+  display: none;
+}
+.result_daily .reply_daily {
+  display: block;
+   position:absolute;
+  width:128px;
+  height:128px;
+}
+.result_daily .analysis {
+  display: none
+}
+/*日常*/
+/*考试*/
+.result_mock .reply_daily {
+  display: none
+}
+.result_mock .agin {
+  display: none;
+}
+/*考试*/
+.result .info_text{
+	width:100%;
+	line-height:68rpx;
+	color:#333;
+	padding-left:26rpx;
+	background:rgba(6,193,174,0.1);
+}
+.result .detail_result{
+	
+    padding:24rpx 60rpx 140rpx;
+    font-size:12px;
+    color:#fff;
+    position:relative;
+    flex-grow:1;
+
+
+}
+.result .detail_result .contain{
+
+	  display: flex;
+    flex-direction:row;
+    flex-flow:wrap;
+    justify-content:flex-start;
+	
+}
+.result-box {
+  display: flex;
+  width: 20%;
+  flex-direction: row;
+  justify-content: center;
+}
+.result .detail_result .contain .result-box  view{
+	width:60rpx;
+	height:60rpx;
+	border-radius:50%;
+	margin-top:40rpx;
+	text-align:center;
+	line-height:60rpx;
+}
+.result .detail_result .right{
+	background:#06c1ae;
+}
+.result .detail_result .error{
+	background:#ff5a5a;
+	
+}
+.result_daily .agin{
+  position: fixed;
+    bottom:0;
+	width:100%;
+	line-height:96rpx;
+	color:#fff;
+	background:#06c1ae;
+	text-align:center;
+	font-size:14px;
+}
+.result_mock .analysis{
+    width:100%;
+    display: flex;
+    position: fixed;
+    bottom:0;
+    flex-direction:row;
+    justify-content:space-between;
+    padding:8rpx 46rpx;
+    background:#eee;
+}
+.result_mock .analysis view{
+	
+	color:#06c1ae;
+	background:#fff;
+	line-height:80rpx;
+	border-radius:20rpx;
+	padding:0 60rpx;
+	
+}
+.result_mock .analysis .click{
+	color:#fff;
+	background:#06c1ae;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

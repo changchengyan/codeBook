@@ -1,0 +1,64 @@
+<!--pages/book/answer/answer.wxml-->
+<scroll-view class="page-scroll-view {{font}}" scroll-y="true"  bindscrolltolower="loadAskList">
+<view class="teacher-area">
+    <view class="head-info"  bindtap="toForm">
+        <view class="img"><image src="{{book.author_pic}}"></image></view>
+        <view class="text">
+            <view class="nickname f2">{{book.author}}</view>
+            <view class="other f1">已回答{{book.answer_user_count}}位读者，共{{book.answer_count}}个问题</view>
+        </view>
+        <view class="toform f2">我要提问</view>
+    </view>
+    <view class="sales-info">
+        <view class="text f1"><text>{{book.author_info}}</text></view>
+    </view>
+</view>
+<view class="list-title f3">问题列表</view>
+<!--数据加载中-->
+<block wx:if="{{ask.count== 0 && loaddingPage && ifconnection}}">    
+    <view class="list-loadding">
+        <view class="icon"><image src="{{LOADDING_ICON}}"></image></view>
+        <view class="text"><text>{{LOADDING_TEXT}}</text></view>
+    </view>
+</block>
+<!--数据加载中end-->
+<!--没有网络-->
+<block wx:if="{{!ifconnection}}">
+  <view class="no-connection" bindtap="connectionRefrash">
+        <view class="icon"><image src="../../images/no_connection.png"></image></view>
+        <view class="text"><text>网络连接错误,检查网络后点击重试</text></view>
+    </view>
+</block>
+<!--没有网络end-->
+<!-- 没有学习交流数据时的提示-->
+<view class="no-answer" wx:if="{{ask.count==0 &&!loadding}}">
+   <view class="nodata-canvas">
+        <image src="{{NODATA_ICON}}"></image>
+        <view class="text f2"><text>参与提问，也能让他人解惑</text></view>
+   </view>
+</view>
+
+<view class="ask-node" wx:for="{{ask.list}}">
+        
+        <view class="ask-item">
+            <view class="ask-headimg">
+                <image src="{{item.headimgurl}}"></image>
+            </view>
+            <view class="ask-text">
+                <view class="nickname f2">{{item.nickname}} <view class="datetime f1">{{item.datetime}}</view> </view>
+                <view class="info f3"><text>{{item.info}}</text></view>
+                
+            </view>
+        </view>
+        <view class="ask-item-reply"  wx:for="{{item.childlist.list}}">
+            <view class="ask-headimg">
+                <image src="{{book.author_pic}}"></image>
+            </view>
+            <view class="ask-text">
+                <view class="nickname f2">{{book.author}} <view class="datetime f1">{{item.datetime}}</view></view>
+                <view class="info f3"><text>{{item.info}}</text></view>
+            </view>     
+        </view>
+
+</view>
+</scroll-view>

@@ -1,0 +1,33 @@
+<!--pages/book/info/info.wxml-->
+<view class="{{font}}">
+<view class="book-title f6">{{book.book_name}}</view>
+
+<view class="book-author f1">作者：{{book.author}}</view>
+<view class="book-data f1">印刷：{{book.publish_data}}</view>
+<view class="book-publish f1">出版：{{book.publish_house}}</view>
+<view class="book-isbn f1">ISBN：{{book.isbn}}</view>
+
+<view class="book-desc-base book-desc">
+<view wx:if="{{book.book_info_mp3_url}}" class="audio-box">
+<!--<audio poster="{{book.book_pic}}" name="《{{book.book_name}}》" author="{{book.author}}" src="{{book.book_info_mp3_url}}" id="myAudio" controls="true" class="audio"></audio>-->
+	<view class="contain">
+		<view class="pic">
+			<image class="img" src="{{book.book_pic}}"></image>
+			<block wx:if="{{playing}}">
+			<view class="audio_play" bindtap="audioPause">
+				<view class="pause"></view>	    			
+			</view>
+			</block>
+			<block wx:else>
+			<view class="audio_play" bindtap="audioToPlay">
+				<view class="play"></view>
+			</view>
+			</block>
+		</view>
+		<view class="name">{{book.book_name}}</view>
+		<view class="time">{{appInstance.currentPosition}}</view>
+	</view>
+</view>
+    <text>{{book.book_info}}</text>
+</view>
+</view>

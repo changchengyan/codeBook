@@ -1,0 +1,45 @@
+<!--pages/view/ebook/ebook.wxml-->
+<scroll-view class="page-scroll-view {{font}}" scroll-y="true"  bindscrolltolower="loadBookMatchFileList">
+<view class="album-list-canvas">
+    <view class="list-head"  bindtap="toInstance">
+        <view class="image-canvas"><image src="{{bookMatch.match_pic}}" mode="widthFix"></image></view>
+        <view class="text-canvas">
+            <view class="instance_name f3">{{bookMatch.match_title}}</view>            
+            <view class="instance_desc f2"><text>{{bookMatch.match_desc}}</text></view>
+        </view>
+        <view class="instance_more"  ><image src="../../images/icon_tools_arrow2.png" mode="widthFix"></image></view>
+    </view>
+    <block wx:if="{{album.total_count >0}}">
+    <view class="list-title f3">文章列表</view>
+    <view class="item-canvas">
+        <view class="item" wx:for="{{album.list}}" data-node="{{item}}"  bindtap="toArticleView">            
+            <view class="title f3">{{item.title}}</view>
+            <view class="dtitle f2">{{item.dtitle}}</view>
+        </view>
+    </view>
+    </block>
+</view>
+
+<block wx:if="{{loadding}}">    
+    <view class="list-loadding">
+            <view class="icon"><image src="{{LOADDING_ICON}}"></image></view>
+            <view class="text f1"><text>{{LOADDING_TEXT}}</text></view>            
+    </view>
+</block>
+
+<block wx:if="{{album.total_count ==0}}">
+    <view class="nodata-canvas">
+            <image src="{{NODATA_ICON}}"  mode="widthFix"></image>
+            <view class="text f2"><text>{{NODATA_TEXT}}</text></view>
+    </view>
+</block>
+</scroll-view>
+
+<block wx:if="{{isShare}}">
+<view class="pub-navigation">
+    <view class="home"  bindtap="toHome"><image src="{{ICON_HOME_PATH}}"></image></view>
+    <view class="user"  bindtap="toUser"><image src="{{ICON_USER_PATH}}"></image></view>
+</view>
+</block>
+<import src="../../template/template.wxml"/>
+<template is="template-pay-box" data="{{price:template_pay.price,payShow:template_pay.payShow,sourceName:template_pay.sourceName,sourceNum:template_pay.sourceNum,clicked:template_pay.clicked}}" />

@@ -1,0 +1,7 @@
+<!--pages/user/help/help.wxml-->
+<view class="item-canvas">
+        <view class="item"  wx:for="{{help.list}}" data-index="{{index}}">
+            <view class="title">{{index+1}}.{{item.title}}</view>
+            <view class="info"><text>{{item.info}}</text></view>
+        </view>
+    </view>

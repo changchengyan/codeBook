@@ -1,0 +1,83 @@
+{
+  "pages":[
+    "pages/desk/desk",
+    "pages/user/user",
+    "pages/user/message/message",
+    "pages/user/welcome/welcome",
+    "pages/user/help/help",
+    "pages/user/setting/setting",
+    "pages/user/setting/about/about",
+    "pages/user/setting/protocol/protocol",
+    "pages/user/setting/font/font",
+    "pages/user/setting/sound/sound",
+    "pages/seed/seed",
+    "pages/seed/order/order",
+    "pages/book/book",
+    "pages/book/comment/comment",
+    "pages/book/answer/answer",   
+    "pages/book/answer/form/form",
+    "pages/book/info/info", 
+    "pages/view/sound/sound",
+    "pages/view/video/video",
+    "pages/view/album/album",
+    "pages/view/pdf/pdf",  
+    "pages/view/pdf/read/read", 
+    "pages/view/article/article", 
+    "pages/view/webcast/webcast",
+
+    "pages/view/default/default", 
+    "pages/view/ebook/ebook", 
+    "pages/view/ebook/read/read", 
+    "pages/view/book/book", 
+    "pages/view/number/number", 
+    "pages/view/pretest/pretest", 
+    "pages/view/question/question", 
+
+    "pages/view/unknown/unknown",
+
+    "pages/template/template",
+    "pages/view/match/register/register",
+    "pages/view/match/match", 
+    "pages/view/match/myRegister/myRegister",
+    "pages/view/match/registerState/registerState",
+
+    "pages/view/pretest/pretestInfo/pretestInfo",
+    "pages/view/pretest/dailyInfo/dailyInfo",
+    "pages/view/pretest/mockInfo/mockInfo",
+    "pages/view/pretest/result/result",
+    "pages/view/pretest/quick/quick",
+    "pages/template/richText/richText"
+
+
+
+  ],
+  "tabBar": 
+  {
+    "borderStyle":"white",
+    "color":"#777",
+    "selectedColor":"#06c1ae",
+    "backgroundColor":"#f5f5f5",
+    "list": 
+    [
+      
+      {
+        "pagePath": "pages/desk/desk",
+        "text": "书架",
+        "iconPath":"pages/images/icon-2.png",
+        "selectedIconPath":"pages/images/icon-2-over.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath":"pages/images/icon-3.png",
+        "selectedIconPath":"pages/images/icon-3-over.png"
+      }
+    ]
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#06c1ae",
+    "navigationBarTitleText": "码书阅读",
+    "navigationBarTextStyle":"#fff"
+  }
+}

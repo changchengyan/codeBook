@@ -1,0 +1,62 @@
+<!--pages/desk/desk.wxml-->
+<!-- 没有书籍时，主界面仅仅显示扫码 -->
+<view class="{{font}}">
+<block wx:if="{{book.total_count==0}}">
+
+    <view class="flex-body">
+        <view class="book-scan" id="scanButton" bindtap="bindStartScan">
+          <image src="../images/scan.png" class="scan-icon"></image>
+          <view class="text-view"><text class="text">扫一扫书籍条码</text></view>
+        </view> 
+        <view class="info-view">
+        <image src="../images/scan-info.png" class="scan-info"></image>
+        </view>
+    </view>
+    </block>
+
+    <!-- 有书籍时，主界面显示书架和扫码 -->
+    <block wx:if="{{book.total_count>0}}">
+      <scroll-view class="page-list" scroll-y="true"  bindscrolltolower="loadBookList" enable-back-to-top="true">
+          <view class="book-add-area">
+            <view class="book-count f-book-count" bindtap="bindViewTap">
+              <text class="count">{{book.total_count}}</text>
+              <text class="text f2">本</text>
+            </view>
+            <view class="book-scan" bindtap="bindStartScan">
+                <view class="icon"><image src="../images/scan.png" mode="widthFix"></image></view>
+                <view class="text f1">扫一扫</view>
+            </view>    
+          </view>
+          <view class="book-add-area-visibility">正在刷新</view>
+          <!--列表页-->
+                <view  class="book-list">
+                <view class="item" wx:for="{{book.list}}" bindlongtap="longTapBook"  bindtap="toBookPage" data-book-id="{{item.id}}" data-book-index="{{index}}">
+                    <block wx:if="{{showDeleteBtn}}">
+                    <view class="item-delete" catchtap="deleteBook"  data-book-id="{{item.id}}" data-book-index="{{index}}" ><image src="../images/delete_btn.png" mode="widthFix"></image></view>
+                    </block>             
+                    <view class="item-content">
+                    <view class="icon-view" style="height:{{imgHeight}}px">
+                    <!--<view style="background:url({{item.book_pic}}) no-repeat center;" class="book-img"></view>-->
+                    <image  class="icon" src="{{item.book_pic}}"  mode="widthFix" style="padding:{{fixPadding}}px 0" ></image></view>
+                    </view>
+                    <view class="text-view f2"><text class="text">{{item.book_name}}</text></view>
+                </view>
+            </view>
+      </scroll-view>
+      
+    </block>
+    <block wx:if="{{ifTrueDel}}">
+    <view class="maskBox">
+    	<view class="mask"></view>
+        <view class="to-sure-del">
+            <view class="to-sure-word">
+                <text>是否确定删除此书籍</text>
+            </view>
+            <view class="to-choose-sure">
+                <view class="choose-button" catchtap="sureDel">确定</view>
+                <view class="choose-button" catchtap="noDel">再想想</view>
+            </view>
+        </view>
+    </view>
+    </block>
+</view>

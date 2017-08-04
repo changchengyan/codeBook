@@ -1,0 +1,69 @@
+<!--pages/book/comment/comment.wxml-->
+<scroll-view class="page-scroll-view {{font}}" scroll-y="true"  bindscrolltolower="loadCommentList">
+<view class="comment-cvs">
+<!--数据加载中-->
+<block wx:if="{{comment.list.length== 0&&loaddingPage && ifconnection}}">    
+    <view class="list-loadding">
+        <view class="icon"><image src="{{LOADDING_ICON}}"></image></view>
+        <view class="text"><text>{{LOADDING_TEXT}}</text></view>
+    </view>
+</block>
+<!--数据加载中end-->
+<!--没有网络-->
+<block wx:if="{{!ifconnection}}">
+  <view class="no-connection" bindtap="connectionRefrash">
+        <view class="icon"><image src="../../images/no_connection.png"></image></view>
+        <view class="text"><text>网络连接错误,检查网络后点击重试</text></view>
+    </view>
+</block>
+<!--没有网络end-->
+	<!-- 没有学习交流数据时的提示-->
+	<view class="no-comment" wx:if="{{comment.list.length==0&&! loadding}}">
+   <view class="nodata-canvas">
+        <image src="{{NODATA_ICON}}"></image>
+        <view class="text f2"><text>参与讨论，也是一种创作</text></view>
+    </view>
+   
+	</view>
+    <view class="comment-node" wx:for="{{comment.list}}" data-node="{{item}}" bindtap="openReForm">
+        <view class="comment-item" >        
+            <view class="comment-headimg">
+                <image src="{{item.headimgurl}}"></image>
+            </view>
+            <view class="comment-text">
+                <view class="nickname f2">{{item.nickname}} <text class="datetime f1">{{item.datetime}}</text> </view>
+                <view class="info f3"><text>{{item.info}}</text></view>               
+            </view>            
+        </view>
+        <view class="comment-item-reply"  wx:for="{{item.childlist.list}}">
+            <view class="comment-text">
+                <view class="nickname f2">{{item.nickname}} <view class="datetime f1">{{item.datetime}}</view></view>
+                <view class="info f3"><text>{{item.info}}</text></view>
+            </view>     
+        </view>
+    </view>
+</view>
+<block wx:if="{{!formDisplay}}"> 
+<view class="comment-toform"  bindtap="openForm">
+    <view>说点什么吧...</view>
+</view>
+</block>
+
+<block wx:if="{{formDisplay}}"> 
+    <view class="form-page-mask">form-page-mask</view>
+    <view class="form-page-content">
+        <view class="null-area" bindtap="closeForm"></view>
+        <view class="form-area">
+            <form bindsubmit="formSubmit" bindreset="formReset">
+            <view class="info">
+                <textarea class="content" placeholder="最多输入140个字" focus="{{formFocus}}" fixed="true" value="{{formInfo}}" type="text" name="info" cursor-spacing="70"/>    
+            </view>
+            <view class="button">
+                <button class="pub-submit" type="default" form-type="submit"> 发表 </button>
+            </view>
+            </form>
+        </view>
+    </view>
+</block>
+
+</scroll-view>

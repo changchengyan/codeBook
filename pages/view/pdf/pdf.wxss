@@ -1,0 +1,81 @@
+
+.page-scroll-view
+{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+.pdf-list-canvas
+{
+   
+}
+.pdf-list-canvas .list-head
+{
+    
+    display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:flex-start;
+    padding: 15px; 
+    background-color: #06c1ae;
+    color: #fff;
+
+}
+.pdf-list-canvas .list-head .image-canvas
+{   
+    width: 60px;
+    max-width:60px;
+    min-width:60px;
+    padding: 3px 0px 0px 0px;
+    flex-grow:1; 
+}
+.pdf-list-canvas .list-head .image-canvas image
+{
+   width: 60px; height: 60px;
+}
+.pdf-list-canvas .list-head .text-canvas
+{   
+   padding: 0px 15px 0px 15px;
+   flex-grow:8; 
+}
+.pdf-list-canvas .list-title
+{ 
+    padding: 10px 20px 10px 20px; 
+    background-color: #04bca9; color: #fff;
+}
+
+.pdf-list-canvas .list-head .text-canvas .instance_name{padding: 0px 0px 5px 0px; color: #fff;}
+.pdf-list-canvas .list-head .text-canvas .instance_desc{
+    color: #cfebeb;overflow:hidden; 
+    text-overflow:ellipsis;
+    display:-webkit-box; 
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    }
+.pdf-list-canvas .list-head  .instance_more
+{ 
+    flex-grow:1;  max-width: 30px;
+    width: 30px; min-width: 30px; padding: 23px 0px 20px 0px; text-align: center;
+}
+.pdf-list-canvas .list-head  .instance_more image{ width: 10px;height:17px;}
+
+.pdf-list-canvas .item-canvas{ padding: 40px 20px 20px 20px; background-color: #fff;}
+.pdf-list-canvas .item-canvas  .img{box-shadow:0 0 5px 2px #aaa; padding: 5px; background-color: #fff;}
+.pdf-list-canvas .item-canvas  .img image{ width: 100%; }
+.pdf-list-canvas .name{ text-align: center; color: #333; padding: 10px 0px 0px 0px;}
+.pdf-list-canvas  .filesize{ text-align: center; color: #999;  padding: 5px 0px 40px 0px;}
+
+.pay-item-canvas{ display:flex;
+flex-direction:row;
+justify-content: flex-start;
+flex-wrap:wrap;
+width: 100%;
+padding: 10px; background-color: #fff;}
+.pay-item-canvas .img{box-shadow:0 0 5px 2px #aaa; padding: 5px; background-color: #fff;}
+.pay-item-canvas  .img image{ width: 100%;height:90px; }
+.pay-item-canvas .name{ text-align: center; color: #333; padding: 10px 0px 0px 0px; text-overflow: -o-ellipsis-lastline;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.pay-item-canvas  .filesize{ text-align: center; color: #999;  padding: 5px 0px 40px 0px;}
+.pay-item-canvas .item-file {
+  width: 33%;
+  padding: 10px;
+}

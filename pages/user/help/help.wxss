@@ -1,0 +1,5 @@
+/* pages/user/help/help.wxss */
+.item-canvas{ padding: 10px;}
+.item-canvas .item{ padding: 5px; border-bottom: 1px solid #eee;}
+.item-canvas .title{ padding: 10px 0px 5px 0px; font-size: 16px; line-height:24px;color: #06c1ae; }
+.item-canvas .info{ padding: 0px 0px 10px 0px; font-size: 14px; line-height: 21px;}

@@ -1,0 +1,121 @@
+<!--pages/book/book.wxml-->
+<view class="bookBg"></view>
+<scroll-view class="page-scroll-view {{font}}" scroll-y="true"  bindscrolltolower="loadSourceList">
+<view class="book-info-background" >
+    <view class="book-info-canvas">
+        <view class="icon" bindtap="toComment">
+            <view><image src="../images/book-f-1.png"  mode="widthFix"></image></view>
+            <view class="text f2">学习交流</view>
+            <view class="number f0">（{{book.comment_count}}）</view>
+        </view>
+        <view class="info">
+            <view class="book-pic" bindtap="toInfo">
+                <image  class="pic" src="{{book.book_pic}}" mode="aspectFill"/>
+                <view wx:if="{{book.book_info_mp3_url}}" class="sound-icon" >
+                    <image src="../images/has_sound.png"  mode="widthFix"></image>
+                </view>
+            </view>
+        </view>        
+        <view class="icon" bindtap="toAnswer">
+            <view><image src="../images/book-f-2.png"  mode="widthFix"></image></view>
+            <view class="text f2">作者答疑</view>
+            <view class="number f0">（{{book.ask_count}}）</view>
+        </view>
+    </view>    
+</view>
+
+<!--正在加载中begin-->
+<block wx:if="{{source.total_count ==0 && loaddingPage && ifconnection}}">    
+    <view class="list-loadding">
+            <view class="icon"><image src="{{LOADDING_ICON}}"></image></view>
+            <view class="text f1"><text>{{LOADDING_TEXT}}</text></view>            
+    </view>
+</block>
+<!--正在加载中end-->
+
+<block wx:if="{{source.total_count ==0 && !loaddingPage && ifconnection}}">
+    <view class="book-nodata-title">{{book.book_name}}</view>
+    <view class="book-nodata-author">作者：{{book.author}}</view>
+    <view class="book-nodata-publish">出版社：{{book.publish_house}}</view>
+    <view class="book-nodata-desc book-desc">
+    <view class="nodata-canvas">
+        <image src="{{NODATA_ICON}}"></image>
+        <view class="text f2"><text>{{NODATA_TEXT}}</text></view>
+    </view>
+    </view>      
+</block>
+<!--没有网络begin-->
+<block wx:if="{{!ifconnection}}">
+  <view class="no-connection" bindtap="connectionRefrash">
+        <view class="icon"><image src="../images/no_connection.png"></image></view>
+        <view class="text"><text>网络连接错误,检查网络后点击重试</text></view>
+    </view>
+</block>
+<!--没有网络end-->
+<block wx:if="{{source.total_count >0}}">
+<view class="source-title f4">配套资源</view>
+<!--直播-->
+<block wx:if="{{ webcast.length > 0 }}">
+  <view class="live-canvas">
+  <swiper > 
+      <swiper-item wx:for="{{webcast}}"  class="top">
+        <view class="live-box" bindtap="toLive" data-node="{{item}}">
+          <!-- <image src="{{item.source_img}}" mode="widthFix" ></image> -->
+          <view style="background:url({{item.source_img}}) no-repeat center;background-size:cover;" class="video-img"></view>
+          <view class="live-word">
+              <view class="live-title f3">{{item.source_name}}</view>
+              <view class="live-desc f2">{{item.source_desc}}</view>
+          </view>
+          <view class="live-more  f0">
+              <text class="live-info">主播：{{item.adviser_name}}，时间：{{item.sale_begin_time}}-{{item.sale_end_time}} </text><text class="live-button">LIVE</text>
+          </view>
+        </view>
+      </swiper-item>
+      
+  </swiper>
+</view>
+</block>
+
+<view class="source-canvas" >   
+    <view class="source-item" wx:for="{{source.list}}" data-node="{{item}}" bindtap="toSourceView">
+        <view class="item-body">
+            <view class="source-pic">
+                <image src="{{item.match_pic}}" mode="widthFix"></image>
+            </view>
+            <view class="source-text">
+                <view class="title f3">{{item.match_title}}</view>
+                <view class="desc f2">{{item.match_desc}}</view>
+                <view class="more f0">浏览：{{item.browser_count}}次，类型：{{item.icon_type}}               	
+	        		<block wx:if="{{item.ispay>0}}"><text class="free">已购买</text></block>
+	                <block wx:else>  
+	                	<block wx:if="{{item.match_price==0}}"><text class="free">免费</text></block>
+	                	<block wx:else>               	                  
+		                    <block wx:if="{{item.issale=='停售'}}"><text class="free">停售</text></block>
+		                    <block wx:else="{{item.match_price>0}}"><text class="price">￥{{item.match_price}}</text></block>
+	                	</block> 
+	                		                    
+                    	
+	                </block>
+                   
+                </view>
+            </view>
+        </view>
+
+    </view>
+    <view class="loadTip" wx:if="{{loadTip.showLoadTip}}">
+    	<view class="icon"><image src="{{LOADDING_ICON}}"></image></view>
+        <view class="text f1"><text>{{loadTip.text}}</text></view>            
+    </view>
+    
+</view>
+</block>
+
+</scroll-view>
+
+
+<block wx:if="{{isShare}}">
+<view class="pub-navigation">
+    <view class="home"  bindtap="toHome"><image src="{{ICON_HOME_PATH}}"></image></view>
+    <view class="user"  bindtap="toUser"><image src="{{ICON_USER_PATH}}"></image></view>
+</view>
+</block>

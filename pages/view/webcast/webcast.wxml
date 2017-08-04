@@ -1,0 +1,59 @@
+<!--pages/view/webcast/webcast.wxml-->
+<view class="{{font}}  contain-box">
+  <view class="video-view" >
+  <block wx:if="{{livestate==1}}">
+    <video src="{{Liveinfo.play_url_hls}}" bindfullscreenchange="screenchange"  poster="{{Liveinfo.pic_root}}" autoplay="{{autoplay}}" controls id="liveVideo"></video>  
+    </block>
+    <block wx:else>
+    <video src=""   poster="{{Liveinfo.pic_root}}" ></video>  
+    </block>
+  </view>
+  <view class="info-canvas" bindtap="toInstance">
+   	<view class=" user-img">
+  		<image mode="widthFix"src="{{Liveinfo.adviser_logo}}" class="img"></image>
+  	</view>
+  	<view class="text-canvas">
+  		<view class="title f3 ">{{Liveinfo.match_title}}</view>
+  		<view class="desc f2 ">{{Liveinfo.sale_begin_time}}-{{Liveinfo.sale_end_time}}</view>
+  	</view>
+  	<view class="instance_more">
+  		<image mode="widthFix"src="../../images/icon_tools_arrow2.png"></image>
+  	</view>
+  
+  </view>
+  <!--<scroll-veiw scroll-y class="page-scroll-view">-->
+  <view class="container">
+  <view class="msgs-wrapper">
+    <view class="msgs" wx:for="{{msgs}}">
+      <view wx:if="{{item.userAction=='6'}}">
+      <text class="msg-item"><text class="nickname">{{item.userName}}</text>{{item.msg}}</text>
+      </view>
+      <view wx:else>
+          <text class="msg-item"><text class="nickname">{{item.userName}} : </text>{{item.msg}}</text>
+      </view>
+    </view>
+  </view>
+  <form bindsubmit="bindConfirm" >
+  <view class="input-section">  	
+      <input value="{{msgContent}}" name="info"  placeholder="最多输入25个字" maxlength="25" placeholder-style="color:#999;"  />
+      <view class="danmu_button">
+      	<button class="pub-submit" type="default" form-type="submit">发送</button>
+      </view>
+  </view>
+  </form>
+</view>
+  	<!--<view class="communion">
+  		
+  	</view>
+  	<view class="communion-toform">
+  		<view>说点什么吧...</view>
+  	</view>-->
+  <!--</scroll-veiw>-->
+</view>
+
+<block wx:if="{{isShare}}">
+<view class="pub-navigation">
+    <view class="home"  bindtap="toHome"><image src="{{ICON_HOME_PATH}}"></image></view>
+    <view class="user"  bindtap="toUser"><image src="{{ICON_USER_PATH}}"></image></view>
+</view>
+</block>

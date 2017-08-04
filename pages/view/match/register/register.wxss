@@ -1,0 +1,340 @@
+/* pages/view/register/register.wxss */
+.register-box{
+	height:100%;
+	overflow:scroll;
+	padding-bottom:45px;
+}
+.tips{
+	display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    background-color:#f8f8f8;
+    padding-left:26rpx;
+    height:76rpx;
+    line-height:76rpx;
+    font-size:12px;
+    color:#06c1ae;    
+}
+.tips .text{
+	flex-grow:1; 
+	align-items:center;
+}
+.tips .close{
+	display: flex;
+	align-items:center;
+	padding:0 26rpx;
+	
+}
+.tips .close image{
+	width:18rpx;
+	height:18rpx;
+	display:block;
+	align-items:center;
+}
+.register_info{
+	padding-top:50rpx;
+}
+.register_info .list{
+	margin:0 40rpx 23rpx;
+	background:#f5f5f5;
+	border-radius:15rpx;
+	display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    font-size:15px;
+    padding:24rpx 50rpx; 
+    min-height:100rpx;
+}
+.register_info .list .text{
+    align-items:center;
+    color:#333;
+    line-height:26px;
+    width:172rpx;
+}
+.register_info .textarea .text{
+	line-height:26px;
+}
+.register_info .list .type{
+	flex: 1;
+	line-height:26px;
+	color:#999;
+	font-size:13px;
+}
+.register_info .list .type textarea{
+	width:100%;
+	height:100%;
+	margin-top:10rpx;
+
+}
+.register_info .list .type radio{
+  transform:scale(.9);
+  margin-right:3px;
+
+}
+.register_info .list .radio-group{
+	display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    flex-wrap: wrap;
+
+}
+.register_info .list .radio-group label{
+
+    margin-right:100rpx;
+
+}
+
+
+.register_info .list .type checkbox{
+  transform:scale(.9);
+  margin-right:3px;
+}
+
+
+.register_info .list .checkbox-group{
+	display: flex;
+    flex-direction:column;
+    justify-content:flex-start;
+}
+.register_info .list .checkbox-group label{
+	margin-bottom:20rpx;
+}
+
+.commit_info{
+	position:fixed;
+	width:100%;
+	text-align:center;
+	font-size:14px;
+	background:#00bfab;
+	color:#fff;
+	bottom:0;
+	padding:34rpx 0;
+}
+.register_btn{width:100%;position:fixed;bottom:0;left:0;}
+.register_btn .pub-submit{
+	font-size:14px;
+	line-height:30;
+	border-radius:0;
+	line-height:100rpx !important;
+}
+/*报名须知*/
+.mask{
+	position: fixed;
+	top: 0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	z-index: 1000;
+	display: flex;
+    justify-content:center;
+	
+}
+.register_notice{
+	border-radius:5px;
+	width:80%;
+	color:#333;	
+	background:#f8f8f8;
+	align-items:center;
+	margin:auto 0;
+	display: flex;
+	flex-direction:column;
+	justify-content:flex-start;
+	
+}
+.register_notice .title{
+	width:100%;
+	font-size:14px;
+	padding:27rpx 0;
+	text-align:center;
+	border-bottom:1px solid #eee;
+	
+}
+.register_notice .contain{
+	font-size:12px;
+	line-height:18px;
+	padding:0 26rpx 20rpx;
+}
+.register_notice .contain .list{
+	margin-top:10rpx;
+}
+.register_notice .know{
+	width:100%;
+	font-size:14px;
+	color:#06c1ae;
+	text-align:center;
+	padding:12rpx 0;
+	border-top:1px solid #eee;
+}
+.hide textarea{
+	display:none;
+}
+/*支付*/
+.mask .pay{	
+	width:80%;
+	color:#333;		
+	margin:auto 0;
+	position:relative;
+}
+.mask .pay .pay_icon{
+	position:absolute;
+	top:-60rpx;
+	left:0;
+	right:0;
+	margin:0 auto;
+	display:flex;
+	flex-direction:row;
+	justify-content:center;	
+	width:138rpx;
+	height:138rpx;
+	border-radius:50%;
+	background:#fff;
+	
+}
+.mask .pay .pay_icon image{
+	margin-top:12rpx;
+	width:45rpx;
+	height:52rpx;
+}
+.mask .pay .info_box{
+	width:100%;
+	background:#fff;
+	display:flex;
+	flex-direction:column;
+	justify-content:space-between;
+	border-radius:30rpx;
+	overflow:hidden;
+		
+}
+.mask .pay .info_box .to-close{
+	width:100%;
+	padding:25rpx 20rpx;
+	display:flex;
+	flex-direction:row;
+	justify-content:space-between;
+	font-size:12px;	
+	color:#666;
+}
+.mask .pay .info_box .to-close .to-close-box{
+	width:30rpx;
+}
+.mask .pay .info_box .to-close image{
+	width:100%;
+	height:13px;
+}
+.mask .pay .info_box .money{
+	font-size:50rpx;
+	padding-bottom:30rpx;
+	color:#06c1ae;
+	text-align:center;	
+}
+.mask .pay .info_box .name{
+	font-size:32rpx;
+	color:#333;
+	text-align:center;
+}
+.mask .pay .loaddings{
+	height:40px;
+}
+.mask .pay .loaddings image{
+	margin:0 auto;
+	margin-top:15px;
+	width:50px;
+	height:10px;
+	display:block;
+}
+.mask .pay .pay-info-form{
+	width:100%;
+}
+/*三级级联*/
+.cascade_box{
+  font-size: 28rpx;
+  width:100%;
+  height:0;
+  position:fixed;
+  bottom:0;
+  left:0;
+  z-index:999;
+  overflow:hidden;
+
+}
+.cascade_hei{
+  width:100%;
+  height:100%;
+  background:#000;
+  opacity:0.5;
+  position:absolute;
+}
+.cascade_find{
+  width:100%;
+  height:500rpx;
+  position:absolute;
+  bottom:0;
+  background:#fff;
+  display: flex;
+	flex-direction:column;
+	justify-content:flex-start;
+
+}
+.quxiao,.queren{
+  display:block;
+  position:absolute;
+  width:100rpx;
+  height:80rpx;
+  line-height:80rpx;
+  text-align:center;
+  color:#0f0;
+}
+.queren{
+  right:0;top:0;
+}
+.cascade_header{
+  height:80rpx;
+  width:100%;
+}
+.picker_jilian{
+	flex:1;
+}
+/*分享进入页面*/
+.pub-navigation {
+position:fixed;
+z-index:100;
+bottom:150rpx;
+left:0px;
+width:100%;
+display:flex;
+flex-direction:row;
+justify-content:space-between;
+align-items:flex-start;
+padding:0px 15px 0px 15px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
