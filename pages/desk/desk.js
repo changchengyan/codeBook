@@ -23,12 +23,19 @@ Page({
     longTimeOver:false,
     showDeleteBtn:false,
     ifShowBtn:false,
-    imgHeight:0,
     font:app.globalData.weixinUserInfo.code_book_font,
     ifTrueDel: false,
     bookId:"",
     bookIndex:"",
-    nodouble:true
+    nodouble:true,
+    banners:[],
+    isFirstShow:true,
+    bannerOfOxFord:[],
+    currentIndex:0,
+    loadTip:{
+    	showLoadTip:true,
+    	text:'正在加载'
+    }
   },
   bindStartScan:function(event)
   {
@@ -36,8 +43,7 @@ Page({
      wx.scanCode
      ({
       success: (res) => {   
-            app.codeBook.addBookByISBN
-            (
+            app.codeBook.addBookByISBN(
                 res.result,
                 function(resbook)
                 {    
@@ -111,17 +117,24 @@ Page({
   },
   onShow:function()
   {
+    var that=this;
     var font = app.globalData.weixinUserInfo.code_book_font;
     this.setData({font:font});
-    var screenInfo = wx.getSystemInfoSync();
-    var screenWidth = screenInfo.windowWidth;
-    var itemWidth = ((screenWidth-20)/3-20)*1.3
-    this.setData({imgHeight:itemWidth});
     this.hiddenDeleteBtn();
     //清空数据
     
     //加载
-    
+    // app.codeBook.updateBookReadTime(bookId);
+    console.log(that.data.book_id);
+    //重新加载
+    if (!that.data.isFirstShow){
+    	that.data.book.count=0;
+    	that.data.book.list=[];
+    	that.data.index=1;
+    	that.data.loadMore=true;
+    	that.data.loadLastId=0;
+      that.loadBookList();     
+    }
     //判断网络
     wx.getNetworkType
     ({
@@ -140,12 +153,41 @@ Page({
      });
     
   },
+  onHide:function(){
+      var that=this;
+      that.setData({ isFirstShow:false});
+  },
   onLoad: function () 
   {
-    
-    this.loadBookList();
+    var that=this;
+    that.setData(getApp().globalData);
+    app.Dictation.GetCodeBookBannerList(
+      function (res) {
+        console.log(res.data);
+        let banner=res.data.list;
+        let tmpArr=[];
+        for(let i=0;i<banner.length;i++){
+          let myJson={
+            imgurl: banner[i].fileurl,
+            title:banner[i].title,
+            id: banner[i].id,
+            url:banner[i].url
+          }
+          tmpArr.push(myJson);
+        }
+        that.setData({banners:tmpArr});
+      }
+    );
+    that.loadBookList();
   },
- 
+ onReachBottom:function(){
+ 	if(this.data.loadding){
+    	return;
+    }else{
+    	//加载
+	    this.loadBookList();
+    }
+ },
   onPullDownRefresh: function()
   {
   	var that=this;
@@ -153,16 +195,16 @@ Page({
     if(that.data.loadding){
     	return;
     }else{
-    	var book = {total_count:0,count:0,list:[]};
-	    this.setData({book:book});
+    	that.data.book.total_count=0;
+    	that.data.book.count=0;
+    	that.data.book.list=[];
 	    this.setData({loadding:false});
 	    this.setData({loadLastId:0});
 	    this.setData({loadMore:true});
+	    this.setData({showDeleteBtn:false})
 	    //加载
 	    this.loadBookList();
     }
-    
-    
   },
   toBookPage:function(event)
   {
@@ -272,7 +314,7 @@ Page({
                   wx.showToast
                   (
                       {
-                          title: "删除操作成功！",
+                          title: "删除成功！",
                           icon: 'success',
                           duration: 2000
                       }
@@ -296,6 +338,7 @@ Page({
       );
       this.setData({ifTrueDel:false});
   },
+  
   loadBookList:function()
   {
       //首次加载
@@ -303,23 +346,23 @@ Page({
       //下来全部刷新
       var that = this;
        //有必要加载更多，且没在请求加载中
-       console.log(" that.data.loadMore",that.data.loadMore)
+      //  console.log(" that.data.loadMore",that.data.loadMore)
+       console.log("下拉刷新");
       if(that.data.loadMore && !that.data.loadding)
       {       
-           console.log("that.data.loadMore",that.data.loadMore)   
-          if(getApp().globalData.weixinUserInfo.uid>0)
+          //  console.log("that.data.loadMore",that.data.loadMore)   
+          if(app.globalData.weixinUserInfo.uid>0)
           {    
           	
               that.setData({loadding:true});
-              getApp().codeBook.getDeskBookList
-              (
+              app.codeBook.getDeskBookList(
                   function(res)
                   {                  
                       var data = res.data;
                       var list = data.list;
                       if(data.list.length>0)
                       {
-
+                        console.log(data.list);
                           var loadLastId = data.list[data.list.length-1].rownumber;
 
                           //追加数据
@@ -328,6 +371,9 @@ Page({
                           //填充数据
                           
                           for(var i=0;i<list.length;i++) {
+                          
+                            var bookPic = list[i].book_pic;
+                            list[i].book_pic = bookPic.substring(0, bookPic.length - 4) + "_c" + bookPic.substring(bookPic.length - 4)
                             
                             if(list[i].book_pic == "") {
                                 list[i].book_pic = "../images/no_image.png"
@@ -342,6 +388,7 @@ Page({
                       if(list.length!=that.data.loadMoreCount)
                       {
                           that.setData({loadMore:false});
+                    			that.setData({'loadTip.showLoadTip':false});
                       }
                       that.setData({loadding:false});
                       wx.stopPullDownRefresh();
@@ -368,5 +415,34 @@ Page({
             arr.splice(index1,1);
             arr.splice(0,0,item);
         }
+  },
+  //去听写
+  toDictation:function(){
+  	wx.redirectTo({
+      url: `/pages/dictation/searchlist/searchlist`
+		})
+  },
+  gotoSearchList:function(e){
+    var that=this;
+    const URL=e.currentTarget.dataset.urls;
+    wx.navigateTo({
+      url: URL
+      })
+  },
+  //主题下一个
+  bindNext:function(){
+  	var that=this;
+  	that.data.currentIndex=that.data.currentIndex+1;
+  	if(that.data.currentIndex+1>that.data.banners.length){
+  		that.data.currentIndex=0;
+  	}
+  	that.setData({currentIndex:that.data.currentIndex})
+  },
+  bindChange:function(e){
+  	var current=e.detail.current;
+  	this.setData({currentIndex:current})
+  },
+  catchTouchMove:function(){
+  	return false;
   }
 })

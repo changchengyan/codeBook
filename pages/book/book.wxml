@@ -3,11 +3,11 @@
 <scroll-view class="page-scroll-view {{font}}" scroll-y="true"  bindscrolltolower="loadSourceList">
 <view class="book-info-background" >
     <view class="book-info-canvas">
-        <view class="icon" bindtap="toComment">
+        <!-- <view class="icon" bindtap="toComment">
             <view><image src="../images/book-f-1.png"  mode="widthFix"></image></view>
             <view class="text f2">学习交流</view>
             <view class="number f0">（{{book.comment_count}}）</view>
-        </view>
+        </view> -->
         <view class="info">
             <view class="book-pic" bindtap="toInfo">
                 <image  class="pic" src="{{book.book_pic}}" mode="aspectFill"/>
@@ -16,14 +16,38 @@
                 </view>
             </view>
         </view>        
-        <view class="icon" bindtap="toAnswer">
+        <!-- <view class="icon" bindtap="toAnswer">
             <view><image src="../images/book-f-2.png"  mode="widthFix"></image></view>
             <view class="text f2">作者答疑</view>
             <view class="number f0">（{{book.ask_count}}）</view>
-        </view>
+        </view> -->
     </view>    
 </view>
-
+<!--栏目  -->
+  <!-- <view class="book-column" >
+    <view class="column-item">
+      <view class="icon" bindtap="toComment">
+            <view><image src="../images/book_study.png"  mode="widthFix"></image></view>
+            <view class="text f2">学习交流</view>
+          <view class="number f0">（{{book.comment_count}}）</view> 
+        </view>
+    </view>
+    <view class="column-item">
+      <view class="icon" bindtap="toAnswer">
+            <view><image src="../images/book_ans.png"  mode="widthFix"></image></view>
+            <view class="text f2">作者答疑</view>
+           <view class="number f0">（{{book.ask_count}}）</view>
+        </view>
+    </view>
+    <view class="column-item" wx:if="{{book.book_source==2}}">
+      <view class="icon" bindtap="toDictation">
+            <view><image src="../images/book_forg.png"  mode="widthFix"></image></view>
+            <view class="text f2">听写100</view>
+             <view class="number f0">（{{book.comment_count}}）</view> 
+        </view>
+    </view>
+  </view> -->
+<!--  栏目 end-->
 <!--正在加载中begin-->
 <block wx:if="{{source.total_count ==0 && loaddingPage && ifconnection}}">    
     <view class="list-loadding">
@@ -54,6 +78,31 @@
 <!--没有网络end-->
 <block wx:if="{{source.total_count >0}}">
 <view class="source-title f4">配套资源</view>
+<!--栏目  -->
+  <!-- <view class="book-column">
+    <view class="column-item">
+      <view class="icon" bindtap="toComment">
+            <view><image src="../images/book-f-1.png"  mode="widthFix"></image></view>
+            <view class="text f2">学习交流</view>
+            <view class="number f0">（{{book.comment_count}}）</view>
+        </view>
+    </view>
+    <view class="column-item">
+      <view class="icon" bindtap="toAnswer">
+            <view><image src="../images/book-f-2.png"  mode="widthFix"></image></view>
+            <view class="text f2">作者答疑</view>
+            <view class="number f0">（{{book.ask_count}}）</view>
+        </view>
+    </view>
+    <view class="column-item" wx:if="{{book.book_source==2}}">
+      <view class="icon" bindtap="toDictation">
+            <view><image src="../images/book-f-1.png"  mode="widthFix"></image></view>
+            <view class="text f2">听写100</view>
+            <view class="number f0">（{{book.comment_count}}）</view>
+        </view>
+    </view>
+  </view> -->
+<!--  栏目 end-->
 <!--直播-->
 <block wx:if="{{ webcast.length > 0 }}">
   <view class="live-canvas">
@@ -88,7 +137,9 @@
                 <view class="more f0">浏览：{{item.browser_count}}次，类型：{{item.icon_type}}               	
 	        		<block wx:if="{{item.ispay>0}}"><text class="free">已购买</text></block>
 	                <block wx:else>  
-	                	<block wx:if="{{item.match_price==0}}"><text class="free">免费</text></block>
+                  <block wx:if="{{item.icon_type=='小程序'}}"><text class="free">推荐</text></block>
+	                	<block wx:elif="{{item.match_price==0}}"><text class="free">免费</text></block>
+                    
 	                	<block wx:else>               	                  
 		                    <block wx:if="{{item.issale=='停售'}}"><text class="free">停售</text></block>
 		                    <block wx:else="{{item.match_price>0}}"><text class="price">￥{{item.match_price}}</text></block>

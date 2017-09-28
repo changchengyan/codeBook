@@ -65,6 +65,7 @@ Page({
         sound,
         function(res)
         {
+          console.log(res.data);
           var sale_begin_time = res.data.sale_begin_time ;
           var sale_end_time = res.data.sale_end_time;
           res.data.sale_begin_time = sale_begin_time.substring(0, sale_begin_time.length-3);
@@ -92,6 +93,8 @@ Page({
     );
 		//初始化监听
     that.listenInit();
+
+   
 
   },
   selectPic:function(event)

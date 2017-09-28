@@ -12,7 +12,7 @@
     <block wx:if="{{pdf.count >= 0}}">
     <view class="list-title f3">文档列表</view>
     <view class="{{imgStyle}}">
-        <view class="item-file" wx:for="{{pdf.list}}" data-file-id="{{item.id}}" bindtap="toRead">
+        <view class="item-file" wx:for="{{pdf.list}}" data-file-item="{{item}}" bindtap="toRead">
             <view class="img"><image src="{{item.imgurl}}" mode="widthFix"></image></view>
             <view class="name f2">{{item.file_name}}</view>
             <view class="filesize f0">共 {{item.img_count}} 页 {{item.file_size}} MB</view>
@@ -47,4 +47,5 @@
 <!--收费弹框-->
 <import src="../../template/template.wxml"/>
 <template is="template-pay-box" data="{{price:template_pay.price,payShow:template_pay.payShow,sourceName:template_pay.sourceName,sourceNum:template_pay.sourceNum,clicked:template_pay.clicked}}" />
-
+<!--加载中  -->
+<loading hidden="{{!isLoading}}">打开中,请稍后...</loading>

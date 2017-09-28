@@ -46,9 +46,9 @@
     "pages/view/pretest/mockInfo/mockInfo",
     "pages/view/pretest/result/result",
     "pages/view/pretest/quick/quick",
-    "pages/template/richText/richText"
-
-
+    "pages/template/richText/richText",
+    "pages/dictation/searchlist/searchlist",    
+    "pages/dictation/OxFord/OxFord"
 
   ],
   "tabBar": 

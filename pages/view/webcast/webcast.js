@@ -69,22 +69,24 @@ Page({
           }
       });
       app.codeBook.GetLiveRoomStatus(match_app_id, function(res) {
-      	//    	 if(res.output.length>0){
-      	//    	 	that.setData({livestate:res.output[0].status});
-      	//    	 }else if(res.ret==1000){
-      	//    	 	setTimeout(function(){
-      	//    	 		wx.redirectTo({url: '../../book/book?book_id='+that.data.bookId});
-      	//    	 		return false;
-      	//    	 	},2000)
-      	//    	 	
-      	//    	 }
-      	if(res.data.success) {
+      	if(res.success) {
       		that.setData({
       			livestate: res.data.status
       		});
+      		var videoContext = wx.createVideoContext('liveVideo');
+            videoContext.pause();
       	}
-
-      	if(res.data.status == 0) {
+        if (res.data.status == 1) {
+        	that.autoPlay();
+          //that.setData({ autoplay: true });
+         	 // 保持屏幕常亮
+			if (wx.setKeepScreenOn) {
+			  wx.setKeepScreenOn({
+				    keepScreenOn: true
+				})
+			} 
+        }
+        else if(res.data.status == 0) {
       		var msgs = that.data.msgs || [];
       		var xx = '{"userAction":"1","userName":"温馨提示:","headPic":"","msg":"主播不在家噢~~"}';
       		var content = JSON.parse(xx);
@@ -113,53 +115,9 @@ Page({
           if (res.data.status == 1) {
           	//正在直播
           	that.setData({livestate:1});
-            wx.getNetworkType
-              ({
-                success: function (res) {
-                  // wifi/2g/3g/4g/unknown(Android下不常见的网络类型)/none(无网络)
-                  var networkType = res.networkType;
-                  if (networkType == "wifi") {
-                   
-                    that.setData({ autoplay: true });
-                    that.setData({ "LiveInfo.play_url_hls": that.data.Liveinfo.play_url_hls });
-                    var videoContext = wx.createVideoContext('liveVideo');
-                    videoContext.play();
-
-                  } else if (networkType == "none") {
-                    console.log("无网络")
-
-                    //that.setData({ 'videoInfo.file_url': 'http://.mp3' })
-                    wx.showToast({
-                      title: '网络异常',
-                      duration: 2000
-                    });
-                  } else {
-                    wx.showModal({
-                      title: '温馨提示',
-                      content: '您正在使用手机流量观看,是否继续观看',
-                      showCancel: true,
-                      cancelText: '取消观看',
-                      cancelColor: '#06c1ae',
-                      confirmText: '继续观看',
-                      confirmColor: '#06c1ae',
-                      success: function (res) {
-                        if (res.confirm) {
-                          //用户点击继续观看
-                          that.setData({ autoplay: true });
-                          that.setData({ "LiveInfo.play_url_hls": that.data.Liveinfo.play_url_hls });
-                          var videoContext = wx.createVideoContext('liveVideo');
-                          videoContext.play();
-
-                        } else if (res.cancel) {
-                          //用户点击取消观看--不操作
-                          that.setData({ autoplay: false });
-                          that.setData({ 'videoInfo.file_url': 'http://.mp3' })
-                        }
-                      }
-                    })
-                  }
-                }
-              });
+          	var videoContext = wx.createVideoContext('liveVideo');
+            videoContext.pause();
+			that.autoPlay();
            
             clearInterval(that.data.timer);
           }else if(res.data.status==3){
@@ -170,7 +128,7 @@ Page({
           	//没有播
           }
         });
-      },2000);
+      },60000);
 
     }
     else
@@ -220,7 +178,67 @@ Page({
 
    
   },
+   autoPlay:function(){
+   	var that=this;
+   	wx.getNetworkType
+      ({
+        success: function (res) {
+          // wifi/2g/3g/4g/unknown(Android下不常见的网络类型)/none(无网络)
+          var networkType = res.networkType;
+          if (networkType == "wifi") {
+           
+            that.setData({ autoplay: true });
+            // 保持屏幕常亮
+			if (wx.setKeepScreenOn) {
+			  wx.setKeepScreenOn({
+				    keepScreenOn: true
+				})
+			} 
+            that.setData({ "LiveInfo.play_url_hls": that.data.Liveinfo.play_url_hls });
+            var videoContext = wx.createVideoContext('liveVideo');
+            videoContext.play();
 
+          } else if (networkType == "none") {
+            console.log("无网络")
+            wx.showToast({
+              title: '网络异常',
+              duration: 2000
+            });
+          } else {
+            wx.showModal({
+              title: '温馨提示',
+              content: '您正在使用手机流量观看,是否继续观看',
+              showCancel: true,
+              cancelText: '取消观看',
+              cancelColor: '#06c1ae',
+              confirmText: '继续观看',
+              confirmColor: '#06c1ae',
+              success: function (res) {
+                if (res.confirm) {
+                  //用户点击继续观看
+                  that.setData({ autoplay: true });
+                  // 保持屏幕常亮
+					if (wx.setKeepScreenOn) {
+					  wx.setKeepScreenOn({
+						    keepScreenOn: true
+						})
+					} 
+                  that.setData({ "LiveInfo.play_url_hls": that.data.Liveinfo.play_url_hls });
+                  var videoContext = wx.createVideoContext('liveVideo');
+                  videoContext.play();
+
+                } else if (res.cancel) {
+                  //用户点击取消观看--不操作
+                  that.setData({ autoplay: false });
+                  var videoContext = wx.createVideoContext('liveVideo');
+                  videoContext.pause();
+                }
+              }
+            })
+          }
+        }
+      });
+   },
   onReady: function () {
     // 页面渲染完成
   },
@@ -228,6 +246,12 @@ Page({
     // 页面显示
     var font = app.globalData.weixinUserInfo.code_book_font;
     this.setData({ font: font });
+    // 保持屏幕常亮
+	if (wx.setKeepScreenOn) {
+	  wx.setKeepScreenOn({
+		    keepScreenOn: true
+		})
+	} 
   },
   onHide: function () {
     // 页面隐藏

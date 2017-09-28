@@ -1,0 +1,43 @@
+<view class="page-list">
+    <!-- <!--列表页 -->
+    <!-- <view wx:for='{{bannerOfOxFord}}' wx:for-index="idx"> -->
+      <!-- <view wx:if='{{bookJson[item]}}'> -->
+        <!-- <view class="grade_name">
+          <view class="grade{{idx}}"></view>
+          <text class="f2">{{item}}</text>
+        </view> -->
+        <view class="book-list">
+          <view id="add{{item.isadd}}" class="item" wx:for="{{bannerOfOxFord}}" wx:key="id" data-isAdd="{{item.isadd}}"  catchtap="toBookPage" data-bookId="{{item.id}}"  data-book-index="{{index}}">
+            <view class="item-content">
+              <view class="icon-view" style="height:{{imgHeight}}px">
+                <view class="book-img"></view>
+                <image class="icon" src="{{item.book_pic}}" mode="widthFix" style="padding:{{fixPadding}}px 0"></image>
+                <block wx:if="{{item.isadd==1&&!item.clicked}}">
+	                <view class="added" >
+	                	<view class="iconAdd">
+	                		<image mode="widthFix" src="../../images/add.png"></image>
+	                	</view>
+	                	<view class="text f1">已添加</view>
+	                </view>
+                </block>
+                <block wx:elif="{{item.isadd==1&&item.clicked}}">
+	                <view class="added" >
+	                	<view class="iconAdd opacity0 {{opacity1}}">
+	                		<image mode="widthFix" src="../../images/add.png"></image>
+	                	</view>
+	                	<view class="text f1">已添加</view>
+	                </view>
+                </block>
+              </view>
+              <!-- <view class="book_publish_brief f1 colorf">{{item.book_publish_brief}}</view> -->
+              <!-- <view class="exiting f1" wx:if="{{item.isadd}}">已添加</view> -->
+            </view>
+            <view class="text-view f2">
+              <view class="text color9">{{item.book_name}}</view>
+            </view>
+          </view>
+        </view>
+      <!-- </view> -->
+    <!-- </view> -->
+    <view class="no_more" wx:if="{{!loadMore && !loadding}}">已经全部加载完成</view>
+  </view>

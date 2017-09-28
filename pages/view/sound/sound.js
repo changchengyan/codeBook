@@ -86,7 +86,6 @@ Page({
 
     // 页面初始化 options为页面跳转所带来的参数
     var match_id =  options.match_id;
-    console.log(options);
     var match_sales_id = options.match_sales_id;
     var match_sales_name = options.match_sales_name;
     var uid=app.globalData.weixinUserInfo.uid;
@@ -152,7 +151,6 @@ Page({
         {
             that.setData({bookMatch:res.data});
             //判断该资源是否售卖
-            console.log(res);
             if(res.data.state==0){
             	//未开始
             	that.setData({isSale:false});           	
@@ -212,7 +210,8 @@ Page({
           if(list.length != that.data.loadMoreCount)
           {
                that.setData({loadMore:false});
-          }   
+          }
+          console.log(that.data.sound.list)   
         }
     )    
 
